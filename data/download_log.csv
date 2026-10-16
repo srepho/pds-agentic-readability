@@ -1,47 +1,91 @@
 insurer,product,file,url,status,http,bytes
 nrma,car,car.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/car/nrma-car-pds-nrmamotpds-rev2-0923.pdf,cached,,503082
 nrma,home,home.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,cached,,528963
+nrma,home,home_spds1.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev0-0524.pdf,cached,,30987
+nrma,home,home_spds2.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev1-0225.pdf,cached,,40049
+nrma,home,home_spds3.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev2-1125.pdf,cached,,43605
 nrma,landlord,landlord.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf,cached,,386163
+nrma,landlord,landlord_spds1.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-spds-nrmalanspds-rev0-0524.pdf,cached,,31065
 nrma,travel,travel.pdf,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/travel/nrma-travel-pds-g016569-rev13-0426.pdf,cached,,1205785
 cgu,car,car.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-motor-vehicle-pds-pid0301-a4-rev20-0622.pdf,cached,,553755
+cgu,car,car_spds1.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-motor-vehicle-spds-spds477-a4-rev0-0625.pdf,cached,,417059
 cgu,home,home.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,cached,,848214
+cgu,home,home_spds1.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-spds-spds476-a4-rev0-0625.pdf,cached,,417188
 cgu,landlord,landlord.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf,cached,,351257
+cgu,landlord,landlord_spds1.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-spds-spds484-a4-rev0-0625.pdf,cached,,417266
 cgu,travel,travel.pdf,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-travel-pds-tv0033-rev32-0721.pdf,cached,,689243
 racv,car,car.pdf,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/motor-insurance/pds/motor-insurance-pds-current.pdf,cached,,396632
 racv,home,home.pdf,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,cached,,533681
 racv,landlord,landlord.pdf,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/landlord-insurance-pds-current.pdf,cached,,465469
-coles,car,car.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSA.pdf,ok,200 application/pdf,488700
-coles,car,car_part2.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSB.pdf,ok,200 application/pdf,416571
-coles,home,home.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,ok,200 application/pdf,708807
+coles,car,car.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSA.pdf,cached,,488700
+coles,car,car_part2.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSB.pdf,cached,,416571
+coles,car,car_spds1.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/SPDS.pdf,cached,,1329439
+coles,home,home.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,cached,,708807
+coles,home,home_spds1.pdf,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/SPDSEXCL.pdf,cached,,19505
 aami,car,car.pdf,https://www.aami.com.au/assets/documents/aami/motor/car/aami-comprehensive-car-insurance-pds.pdf,cached,,766816
+aami,car,car_spds1.pdf,https://www.aami.com.au/assets/documents/aami/motor/car/aami-comprehensive-car-insurance-spds-a03806-27-07-22-a-lr.pdf,cached,,21019
+aami,car,car_spds2.pdf,https://www.aami.com.au/assets/documents/aami/motor/car/e88711-a03772-040821-a-aami-motor-market-value-spds-lr.pdf,cached,,105847
+aami,car,car_spds3.pdf,https://www.aami.com.au/assets/documents/aami/multi-stream/spds-aami-a03716b.pdf,cached,,419486
 aami,home,home.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,cached,,1170084
+aami,home,home_spds1.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-building-insurance-spds-a03801-27-07-22-a-lr.pdf,cached,,17738
+aami,home,home_spds2.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-spds-101120.pdf,cached,,67247
 aami,contents,contents.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds-a01464.pdf,cached,,887281
+aami,contents,contents_spds1.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-spds-a03802-27-07-22-a-lr.pdf,cached,,20563
+aami,contents,contents_spds2.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-spds-101120.pdf,cached,,50341
 aami,landlord,landlord.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-landlord-insurance-pds-a01460.pdf,cached,,1020059
+aami,landlord,landlord_spds1.pdf,https://www.aami.com.au/assets/documents/aami/home/aami-landlord-insurance-spds-a03804-27-07-22-a-lr.pdf,cached,,19308
+aami,landlord,landlord_spds2.pdf,https://www.aami.com.au/assets/documents/aami/multi-stream/spds-aami-a03716b.pdf,cached,,419486
 gio,car,car.pdf,https://www.gio.com.au/documents/car-and-vehicle/car/gio-car-insurance-pds.pdf,cached,,293998
+gio,car,car_spds1.pdf,https://www.gio.com.au/documents/car-and-vehicle/car/gio-car-insurance-spds.pdf,cached,,56876
+gio,car,car_spds2.pdf,https://www.gio.com.au/documents/car-and-vehicle/car/gio-motor-market-value-spds.pdf,cached,,95604
+gio,car,car_spds3.pdf,https://www.gio.com.au/documents/car-and-vehicle/vehicle-insurance-spds.pdf,cached,,441066
 gio,home,home.pdf,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,cached,,1594209
+gio,home,home_spds1.pdf,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-spds.pdf,cached,,35841
+gio,home,home_spds2.pdf,https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-content-spds-041126.pdf,cached,,27472
 gio,landlord,landlord.pdf,https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-insurance-pds-22217-24-05-25-a.pdf,cached,,1371889
+gio,landlord,landlord_spds1.pdf,https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-insurance-spds.pdf,cached,,35836
+gio,landlord,landlord_spds2.pdf,https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-spds-041126.pdf,cached,,48121
 suncorp,car,car.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/car-insurance-pds.pdf,cached,,195635
+suncorp,car,car_spds1.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/suncorp-car-insurance-spds-31786.pdf,cached,,26048
+suncorp,car,car_spds2.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/suncorp-car-insurance-spds-4-8-21.pdf,cached,,147206
 suncorp,home,home.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,cached,,1063304
+suncorp,home,home_spds1.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-contents-spds-32462-18-08-26-a.pdf,cached,,21799
+suncorp,home,home_spds2.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home-landlord-insurance-spds.pdf,cached,,123114
 suncorp,landlord,landlord.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf,cached,,912435
+suncorp,landlord,landlord_spds1.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-spds-32463-18-08-26-a.pdf,cached,,20478
+suncorp,landlord,landlord_spds2.pdf,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home-landlord-insurance-spds.pdf,cached,,123114
 apia,car,car.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/car/apia-car-advantage-insurance-pds-3-11-20.pdf,cached,,2029111
+apia,car,car_spds1.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/car/apia-car-advantage-spds-ap03881-10-08-22-a-lr.pdf,cached,,69139
+apia,car,car_spds2.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/apia-combined-ncb-spds-ap03913-27-06-26-a-lr.pdf,cached,,50134
 apia,home,home.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,cached,,2641772
+apia,home,home_spds1.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-and-contents-spds-ap03875-10-08-22-a.pdf,cached,,993461
 apia,landlord,landlord.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/landlord/apia-landlord-pds-ap02611-21-06-25-a.pdf,cached,,2121483
+apia,landlord,landlord_spds1.pdf,https://www.apia.com.au/content/dam/suncorp/apia/documents/landlord/apia-landlord-spds-ap03877-10-08-22-a.pdf,cached,,947854
 allianz,car,car.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1428DIR022620260222/$FILE/POL1428DIR.pdf?open,cached,,2663113
 allianz,home,home.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,cached,,1624609
+allianz,home,home_spds1.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS653DIR1024/$FILE/SPDS653DIR.pdf?open,cached,,334878
+allianz,home,home_spds2.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS654DIR1024/$FILE/SPDS654DIR.pdf?open,cached,,335955
 allianz,landlord,landlord.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open,cached,,1544275
+allianz,landlord,landlord_spds1.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS651DIR1024/$FILE/SPDS651DIR.pdf?open,cached,,241587
+allianz,landlord,landlord_spds2.pdf,https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS652DIR1024/$FILE/SPDS652DIR.pdf?open,cached,,267265
 allianz,travel,travel.pdf,https://travel.allianz.com.au/pds,cached,,7414580
-budget_direct,car,car.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSA.pdf,ok,200 application/pdf,121168
-budget_direct,car,car_part2.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSBGD.pdf,ok,200 application/pdf,57157
-budget_direct,home,home.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,ok,200 application/pdf,435742
+budget_direct,car,car.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSA.pdf,cached,,121168
+budget_direct,car,car_part2.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSBGD.pdf,cached,,57157
+budget_direct,car,car_spds1.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/SPDS.pdf,cached,,37679
+budget_direct,home,home.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,cached,,435742
+budget_direct,home,home_spds1.pdf,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/SPDSBUDD.pdf,cached,,22920
 budget_direct,travel,travel.pdf,https://policy.travelinsurancepartners.com.au/partners/budgetdirect/files/documents/pds/PDS_BDB_BDC.pdf,cached,,724767
 youi,car,car.pdf,https://www.youi.com.au/GetPDS?riskType=VEH&effectiveDate=20250702,cached,,439526
 youi,home,home.pdf,https://www.youi.com.au/documents/home-pds,cached,,824942
 racq,car,car.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/motor-vehicle-insurance/pds-racq-motor-vehicle-insurance-091224-rcmv2-1224.pdf,cached,,2131981
+racq,car,car_spds1.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/motor-vehicle-insurance/spds-racq-motor-vehicle-insurance-28072025-rcmv9-0825.pdf,ok,200 application/pdf,84972
+racq,car,car_spds2.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/motor-vehicle-insurance/spds-racq-motor-vehicle-insurance-06122025-rcmv9-0126.pdf,ok,200 application/pdf,264014
 racq,home,home.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,cached,,1241330
+racq,home,home_spds1.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/household-insurance/spds-racq-household-28072025-rhhb9-0825.pdf,ok,200 application/pdf,95691
 racq,travel,travel.pdf,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/travel-insurance/racq-travel-insurance-pds-31-march-2026-v2.pdf,cached,,1169418
-real,car,car.pdf,https://www.realinsurance.com.au/documents/real-car-insurance-pds-july-2026.pdf,FAIL,503 text/html,774
-real,home,home.pdf,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,FAIL,503 text/html,773
-real,landlord,landlord.pdf,https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf,FAIL,503 text/html,776
+real,car,car.pdf,https://www.realinsurance.com.au/documents/real-car-insurance-pds-july-2026.pdf,FAIL,503 text/html,888
+real,home,home.pdf,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,FAIL,503 text/html,886
+real,landlord,landlord.pdf,https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf,FAIL,503 text/html,889
 everyday,car,car.pdf,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Car/UsefulDocumentsCar/Everyday-Car-Insurance-PDS-Jul-26.pdf,cached,,527113
 everyday,home,home.pdf,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,cached,,1351089
 everyday,landlord,landlord.pdf,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Landlords/UsefulDocumentsLandlords/Everyday_Landlords_Insurance_PDS-Jul-26.pdf,cached,,978301

@@ -1,6 +1,7 @@
 # Experimental design v4: paired tests of agentic PDS readability
 
-Status: proposed protocol, updated 16 October 2026. This replaces designs v1-v3; their text remains
+Status: proposed protocol, updated 16 October 2026 (revision 4.1: adds the padded-evidence arm, a
+schema-alignment control for the rewrite, a smaller pilot grid, and calibration diagnostics). This replaces designs v1-v3; their text remains
 in Git history. No LLM evaluation has been run. The task bank, reference answers, model panel,
 interventions and analysis settings must be frozen before the evaluation run. This document alone
 is not a completed preregistration.
@@ -21,8 +22,10 @@ The core experiment compares three presentations of the same policy information 
 model and task. Coverage therefore stays fixed within each comparison. Comparisons of raw accuracy
 between insurers remain descriptive: their underlying coverage can differ in complexity.
 
-Initial scope: home buildings, eight complete policy bundles, twenty common extraction tasks and
-three models from different model families. This is a pilot for estimating effects and variability,
+Initial scope: home buildings, six complete policy bundles, twelve common extraction tasks (three per
+category) and three models from different model families. Expansion to eight bundles and twenty tasks is
+gated on measured annotation throughput (section 9), because reference records, evidence packets and
+rewrites are the binding constraint, not API calls. This is a pilot for estimating effects and variability,
 not a powered industry ranking. Use a separate development set to tune prompts and procedures.
 
 ## 2. Experimental unit and corpus
@@ -43,9 +46,12 @@ Verify underwriting and template relationships for the selected documents; a bra
 label alone is not sufficient. Select for structural and template diversity before looking at model
 performance. Keep all selected bundles and exclusion reasons in the selection record.
 
-The local inventory on 16 October 2026 contains 49 PDFs, including two separate car Part B files;
-these counts do not imply 49 independent policies. The current extraction and metrics scripts operate
-per PDF and do not yet assemble policy bundles. Home buildings avoids initially mixing buildings,
+The local inventory on 16 October 2026 contains 49 base PDFs, including two separate car Part B files;
+these counts do not imply 49 independent policies. `data/manifest.yaml` now also lists supplementary PDSs
+(SPDS) per product where the insurer's public document page exposes them, and `download_pds.py` fetches
+them as `<product>_spdsN.pdf`. Applicability of each SPDS to the listed base PDS version is flagged
+"(verify ...)" where unconfirmed and must be checked against stated effective dates during bundle
+assembly. The extraction and metrics scripts still operate per PDF and do not yet assemble bundles. Home buildings avoids initially mixing buildings,
 contents and landlord cover, even when a source document contains several products.
 
 ### Extraction control
@@ -60,7 +66,9 @@ writing style or assume that a PDF API necessarily exposes the same visual/text 
 
 ## 3. Fixed task bank
 
-Freeze twenty tasks, reused across all eight bundles, with five in each category:
+Freeze twelve tasks for the pilot, reused across all six bundles, with three in each category (twenty
+tasks, five per category, at expansion). A draft bank is in `tasks/home_buildings_task_bank_draft.yaml`;
+it is a starting point for review, not a frozen artifact:
 
 | Category | Target |
 |---|---|
@@ -83,13 +91,21 @@ The task bank determines what the benchmark represents; using a schema does not 
 Use a separate small development set, preferably from template families outside the evaluation set,
 to refine instructions and annotation. If that separation is impossible, disclose the overlap.
 
-## 4. Three paired presentations
+## 4. Four paired presentations
 
 | Arm | Model input | Interpretation |
 |---|---|---|
 | A: Full document | Complete checked policy bundle with page labels | Overall extraction performance |
 | B: Relevant original evidence | All necessary original clauses, definitions, exceptions and cross-references, verbatim | Performance when evidence selection is supplied |
+| B+: Padded evidence | The B packet embedded, in its original relative order, inside non-relevant checked text from the same bundle, padded to A's token length | Separates the cost of context length from the cost of finding evidence |
 | C: Standardised presentation | The same evidence in a fixed plain-language structure, independently checked for meaning | Performance after a specified presentation intervention |
+
+B+ is constructed mechanically from A and the B span list: keep the B spans at their original positions
+and replace every other span with text drawn from the same bundle that the reference record marks as
+irrelevant to the task. Then B+ minus B is the pure long-context cost, and A minus B+ is the cost of
+evidence being surrounded by *relevant-looking* rather than irrelevant material, which is the closest
+available proxy for a navigation cost. Where the padding rule cannot be applied cleanly (for example
+when relevant spans are interleaved with table rows), record B+ as ineligible for that task.
 
 Run each arm in a fresh session, with identical task wording and response schema, and no access to
 other arms, reference answers, web search or previous responses. Randomise arm execution order and
@@ -104,7 +120,15 @@ labels and original order; include the full dependency chain needed to answer th
 selected span and its source. An incomplete packet is an annotation defect.
 
 C uses a frozen template, for example: scope; rule; limits and units; conditions; exclusions;
-exceptions; dependencies. Preserve all material information in B, including uncertainty. Do not add
+exceptions; dependencies. **Schema-alignment control:** the C template must not mirror the response
+schema. If the response schema asks for rule, limits, conditions and exceptions as separate fields, a
+C input organised under the same headings hands the model its output structure, and a C minus B lift
+could reflect alignment rather than presentation. Either (i) write C as continuous plain prose that
+contains every element in a fixed but non-schema order, or (ii) run two response schemas (field-wise
+and free-text-then-extract) across all arms and report the C minus B effect under both; the effect
+must survive the schema change to be attributed to presentation. Option (ii) is preferred when budget
+allows because it also measures schema sensitivity in A and B. Preserve all material information in B,
+including uncertainty. Do not add
 an inferred answer, resolve genuine source ambiguity, supply absent facts, or copy the reference
 answer into the input. Construct C from B under fixed instructions without access to evaluation
 outputs; maintain a mapping from each rewritten rule to its original source spans.
@@ -143,6 +167,9 @@ Each model response contains:
 - Rule/value and reference-state assessment.
 - Limits, units and material conditions/exceptions as applicable.
 - Evidence locations and supporting quotations from its supplied input.
+- A self-reported confidence on a fixed 0-100 scale (or a fixed ordinal scale where a vendor's
+  structured-output support makes a number impractical). Confidence is never used for scoring
+  correctness; it feeds the calibration diagnostics in section 6.
 
 C citations refer to C spans, which map back to original sources. Do not require a verbatim original
 quotation from a model that only received the rewrite. Keep the reference answer separate from all
@@ -165,9 +192,10 @@ The primary intervention contrast is **C minus B** in percentage points on the s
 bundle-task-model observations. It estimates the effect of this standardised presentation package,
 including any changes in length and organisation; it does not isolate sentence style alone.
 
-The secondary contrast is **B minus A** on the same eligible observations. Call it the benefit of
-supplying relevant evidence: context length, salience and distractors also change, so it is not a pure
-navigation effect. Report A separately over all tasks and over the paired subset.
+The secondary contrasts are **B+ minus B** (long-context cost with evidence position preserved) and
+**A minus B+** (cost of relevant-looking surroundings, the navigation proxy), both on the same eligible
+observations. **B minus A** remains reportable as the total benefit of supplying relevant evidence.
+Report A separately over all tasks and over the paired subset.
 
 ### Secondary diagnostics
 
@@ -175,6 +203,12 @@ navigation effect. Report A separately over all tasks and over the paired subset
 - Understatement/omission: missing cover, understated limits or omitted requested information.
 - Unsupported claims: assertions not supported by the supplied evidence.
 - Citation validity and support: location/quotation exists, and the cited text actually supports the claim.
+
+- Confidently-wrong rate: proportion of incorrect answers given with confidence at or above a
+  prespecified threshold (default 80). This is the consumer-harm quadrant. A presentation that moves
+  errors from confident to uncertain is an improvement even when headline accuracy does not move.
+- Calibration: expected calibration error (or a reliability table at fixed bins) per arm and model.
+  Report it as a diagnostic; small pilot counts make it noisy.
 
 Predefine denominators and coding rules; error categories may overlap. A correct answer with a bad
 citation should remain distinguishable from an incorrect answer. Quotes that occur in a document do
@@ -202,8 +236,10 @@ blocks across arms on the development set; B/C must contain the union of require
 must be described as block-based. Never compare a single-task evidence packet with a differently
 prompted multi-task baseline without explicitly changing the protocol.
 
-The maximum initial grid is 8 bundles x 20 tasks x 3 models x 3 arms = 1,440 task responses before
-repeats. B/C ineligibility reduces the realised grid. Request counts depend on task batching; full-bundle
+The maximum pilot grid is 6 bundles x 12 tasks x 3 models x 4 arms = 864 task responses before repeats
+(1,920 at the 8 x 20 expansion). B/B+/C ineligibility reduces the realised grid. The matching annotation
+load at pilot scale is 72 reference records, 72 evidence packets, 72 padding constructions and 72
+rewrites, each with the review steps in section 4; this, not the call count, is what to budget. Request counts depend on task batching; full-bundle
 reads can dominate token cost. Measure tokens and cost on the development set before approving a run.
 Repeat a prespecified random 10% of eligible bundle-task-model triplets across all three arms, selected
 before outputs are inspected, to estimate repeat variability. Repeats are not new independent policies.
@@ -211,7 +247,7 @@ before outputs are inspected, to estimate repeat variability. Repeats are not ne
 ## 8. Analysis
 
 1. Report A accuracy for each model, with task-category and reference-state breakdowns.
-2. Calculate paired C-B and B-A differences within bundle, task and model. Average tasks within the
+2. Calculate paired C-B, B+-B, A-B+ and B-A differences within bundle, task and model. Average tasks within the
    fixed categories and bundles with equal prespecified weights; do not let document length or repeated
    runs determine weight. Report eligible counts and missing categories rather than imputing them.
 3. Show per-bundle effects and model-specific averages before an optional equally weighted panel mean.
@@ -231,9 +267,12 @@ this pilot. Secondary diagnostics and subgroup comparisons are exploratory.
 
 ## 9. Delivery sequence and expansion gates
 
-1. Audit complete bundles and checked extraction; select the development and evaluation sets.
+1. Audit complete bundles (base PDS + parts + applicable SPDS, see `data/manifest.yaml`) and checked
+   extraction; select the development and evaluation sets.
 2. Draft the common task bank, references, evidence packets and rewrite template; complete human review.
-3. Test the workflow on development data, measure cost, and settle response handling and analysis rules.
+3. Test the workflow on development data. Measure API cost **and annotation minutes per reference record,
+   packet, padding construction and rewrite**. Use those throughput numbers, not API cost, to decide
+   whether the evaluation runs at 6 x 12 or 8 x 20, and to settle response handling and analysis rules.
 4. Freeze and hash the evaluation package and register the protocol before any evaluation output is seen.
 5. Run A/B/C with the fixed panel; score, adjudicate and audit all denominators and exclusions.
 6. Publish paired performance charts, error examples, eligibility/rewrite-quality information and a

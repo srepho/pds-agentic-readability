@@ -4,23 +4,25 @@ An independent, open research project studying how faithfully AI models reconstr
 rules in Australian general-insurance **Product Disclosure Statements (PDSs)**, and whether changing
 the presentation improves that fidelity.
 
-The first experiment compares the same policy information in three forms: a complete policy bundle,
-all relevant original clauses, and a standardised plain-language presentation. This separates overall
-extraction performance from the benefit of supplying evidence and the effect of changing its presentation.
+The first experiment compares the same policy information in four forms: a complete policy bundle,
+all relevant original clauses, those clauses padded back to full-document length with irrelevant text,
+and a standardised plain-language presentation. This separates overall extraction performance from the
+cost of context length, the cost of finding evidence, and the effect of changing its presentation.
 See [EXPERIMENT.md](EXPERIMENT.md) for the active v4 protocol.
 
 ## What's here
 
 | Path | Purpose |
 |---|---|
-| `EXPERIMENT.md` | Paired A/B/C pilot design, reference review, scoring and analysis |
-| `EXPERIMENT_OPTIONS.md` | Four alternative designs for consideration; v4 remains active |
+| `EXPERIMENT.md` | Paired A/B/B+/C pilot design, reference review, scoring and analysis |
+| `EXPERIMENT_OPTIONS.md` | Nine alternative designs for consideration; v4 remains active |
 | `PLAN.md` | Implementation milestones and expansion gates |
-| `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel; availability varies |
+| `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel, including supplementary PDSs where published; availability varies |
+| `tasks/home_buildings_task_bank_draft.yaml` | Draft 20-task extraction bank for home buildings (12 flagged for the pilot); unreviewed |
 | `data/download_log.csv` | Downloader status log; immutable experiment provenance is still to be implemented |
 | `data/metrics_classical.csv` | Provisional classical readability metrics |
 | `scripts/find_pdf_links.py` | Harvest PDF links from insurer document-hub pages |
-| `scripts/download_pds.py` | Manifest-driven PDF downloader |
+| `scripts/download_pds.py` | Manifest-driven downloader for base PDSs, parts and supplements (Chrome TLS impersonation with plain-client fallback) |
 | `scripts/extract_text.py` | PyMuPDF extraction into per-PDF text and metadata |
 | `scripts/inspect_pdfs.py` | Inspect pages, words and preparation dates |
 | `scripts/metrics_classical.py` | Classical formulas plus hedge, negation and cross-reference density |
@@ -39,17 +41,20 @@ python -I scripts/extract_text.py
 python -I scripts/metrics_classical.py
 ```
 
-Download counts depend on source availability. The local snapshot on 16 October 2026 contains 49 PDFs,
-including separate car Part B files. A PDF is not necessarily a complete policy: the experiment will
-assemble versioned bundles with all applicable parts and supplements.
+Download counts depend on source availability. The local snapshot on 16 October 2026 contains 49 base
+PDFs, including separate car Part B files, plus 44 supplementary PDSs. A PDF is not necessarily a complete
+policy: the experiment will assemble versioned bundles with all applicable parts and supplements, and the
+applicability of each supplement to its base PDS version still has to be verified against effective dates.
 
 ## Planned pilot
 
-- Home buildings: eight complete policy bundles and twenty common extraction tasks.
-- Three models from different families, tested in fresh sessions across A/B/C presentations.
-- Human-verified reference answers and evidence packets, plus independently checked rewrites.
+- Home buildings: six complete policy bundles and twelve common extraction tasks, expanding to eight
+  and twenty once annotation throughput has been measured.
+- Three models from different families, tested in fresh sessions across A/B/B+/C presentations.
+- Human-verified reference answers and evidence packets, plus independently checked rewrites whose
+  structure is deliberately kept distinct from the response schema.
 - Primary outcome: correct answers with all material qualifications; primary contrast: standardised
-  presentation versus relevant original evidence.
+  presentation versus relevant original evidence. Secondary: confidently-wrong rate and calibration.
 - Per-policy paired charts and error examples, with uncertainty and eligibility reported explicitly.
 
 The pilot measures the selected models' performance. It does not establish human readability, recommend

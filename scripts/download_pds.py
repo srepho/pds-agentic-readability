@@ -1,6 +1,7 @@
 """Download every PDS in data/manifest.yaml into data/raw_pds/<insurer>/<product>.pdf and write a CSV log."""
 import csv, sys, time, pathlib, hashlib
 import yaml
+import requests as plain_requests
 from curl_cffi import requests  # Chrome TLS impersonation: several insurer WAFs block plain python/curl
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -9,7 +10,11 @@ UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit
       "Accept": "application/pdf,*/*;q=0.8", "Accept-Language": "en-AU,en;q=0.9"}
 
 def fetch(url, dest):
-    r = requests.get(url, headers=UA, timeout=90, allow_redirects=True, impersonate="chrome")
+    try:
+        r = requests.get(url, headers=UA, timeout=90, allow_redirects=True, impersonate="chrome")
+    except Exception:
+        # a few hosts (e.g. racq.com.au) fail TLS under impersonation but accept a plain client
+        r = plain_requests.get(url, headers=UA, timeout=90, allow_redirects=True)
     ct = r.headers.get("content-type", "")
     ok = r.status_code == 200 and (r.content[:5] == b"%PDF-")
     if ok:
@@ -23,8 +28,10 @@ def main():
     for ins, meta in man["insurers"].items():
         for prod, spec in (meta.get("products") or {}).items():
             urls = [spec["url"]] + list(spec.get("parts", []))
-            for i, url in enumerate(urls):
-                fname = f"{prod}.pdf" if i == 0 else f"{prod}_part{i+1}.pdf"
+            names = [f"{prod}.pdf"] + [f"{prod}_part{i+2}.pdf" for i in range(len(spec.get("parts", [])))]
+            for j, sup in enumerate(spec.get("supplements", []), start=1):
+                urls.append(sup["url"]); names.append(f"{prod}_spds{j}.pdf")
+            for url, fname in zip(urls, names):
                 dest = RAW / ins / fname
                 if dest.exists():
                     rows.append([ins, prod, fname, url, "cached", "", dest.stat().st_size]); continue

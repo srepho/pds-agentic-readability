@@ -1,10 +1,11 @@
 # Alternative experimental designs for consideration
 
-These four candidate designs investigate different reasons why models misread insurance PDSs. They
+These nine candidate designs investigate different reasons why models misread insurance PDSs. They
 are options for a small home-buildings study, not additions automatically required by the active
 [v4 protocol](EXPERIMENT.md). No option has been selected or preregistered.
 
-The leading candidate for improving document presentation is the wording-by-organisation factorial.
+The leading candidates are the sibling-brand natural experiment, which needs no synthetic material and
+can run first, and the wording-by-organisation factorial for deciding what to change in a document.
 Controlled policy changes could provide a small complementary test of whether models follow the
 supplied rules. Supplementary-document and multi-policy experiments answer separate operational
 questions and are best considered as distinct studies.
@@ -17,6 +18,11 @@ questions and are best considered as distinct studies.
 | Controlled policy changes | Does the answer change when the supplied rule changes? | Test responsiveness to policy evidence |
 | Supplementary documents | Can models apply amendments and distinguish applicable versions? | Evaluate document consolidation and version handling |
 | Single versus multiple policies | Does comparison cause omissions or facts to be assigned to the wrong insurer? | Evaluate the reliability of comparison workflows |
+| Sibling brands (natural experiment) | When the same underwriter issues the same rule under different brand templates, which template is extracted most faithfully? | Rank templates within a group with no synthetic rewriting |
+| Minimal-pair clause edits | Which single editing moves (inline a cross-reference, split a sentence, remove a double negative, ...) improve extraction? | Produce a ranked, evidence-based style guide for machine-readable drafting |
+| Dependency distance | How far apart can a rule and its qualifying exception or definition be before models stop linking them? | Set a placement rule for exceptions and definitions |
+| Navigating agent | Given page, search and contents tools instead of the full text, how many steps does a model need to reach the correct rule, and do headings help? | Evaluate the navigational apparatus of a PDS as agents actually use it |
+| Paraphrase robustness | Does the extracted answer stay correct when the same task is asked in different ways? | Measure robustness to how consumers phrase questions, at low marginal cost |
 
 ## Shared scope and safeguards
 
@@ -208,11 +214,181 @@ The intervention changes context length, information competition and output work
 it as the effect of joint extraction, not a pure measure of writing quality or cross-policy interference.
 A four-order design is a small position check, not exhaustive testing of all 24 document permutations.
 
+## Sibling brands as a natural experiment
+
+### Question and conditions
+
+Several groups issue the same underlying policy under different brand templates. The Suncorp group home
+PDSs for Suncorp, GIO and AAMI in the local collection were all prepared on 31 January 2025 by the same
+manufacturer; Apia's home PDS is a further variant. IAG issues NRMA, CGU and RACV (via IMA) documents of
+very different length and layout. Where the substantive rule for a task is verified identical across
+sibling brands, the brands form a natural content-style transplant: same rule, different wording, layout,
+ordering and length, with no synthetic rewriting and no meaning-preservation review of a constructed
+artifact.
+
+Conditions are the sibling brands themselves, using arm A (full checked bundle) and optionally arm B
+(evidence packet) from the v4 protocol. Eligibility is per task: a task is eligible for a sibling set
+only when the reference answers, including all material qualifications, are identical across every
+sibling in the set after adjudication. Record and report the ineligible tasks; they are themselves
+informative about where sibling products genuinely diverge.
+
+### Outcomes and analysis
+
+Primary outcome: task accuracy per sibling brand on the eligible task set, paired within task and model.
+Report pairwise brand differences in percentage points inside each group, and the within-group spread.
+Because the rule is fixed by construction, any accuracy difference is attributable to the document and
+its surrounding material, not to coverage. Secondary: confidently-wrong rate and citation support per
+brand; whether the same tasks fail across all siblings (a rule problem) or only in some (a template
+problem).
+
+### Interpretation and limitations
+
+This is the cheapest design available: it requires only the existing bundles, the v4 reference records
+and a sibling-identity check per task. Its result is directly actionable inside a group, which is where
+document templates are actually decided. Limitations: the number of sibling sets is small (two groups
+with three or four brands each in the current collection), brands within a group may differ in more than
+template (for example target demographic or optional covers), and identical rules may be embedded in
+different amounts of surrounding material, so length is a covariate rather than a controlled factor.
+Results describe these templates, not plain language in general.
+
+## Minimal-pair clause edits
+
+### Question and conditions
+
+Which individual editing moves make a clause easier for models to extract correctly? Rather than a whole
+rewrite, each clause receives exactly one edit from a frozen catalogue, producing a minimal pair with the
+original. Candidate moves, each defined operationally before any run:
+
+- Inline a cross-reference (replace "see Section 12" with the referenced sentence).
+- Expand a defined term in place (replace "we" or "accidental damage" with its definition once).
+- Split one sentence of more than 40 words into two or three without changing content.
+- Convert a double negative or "unless ... not" construction into a positive statement.
+- Move an exception from a separate list to the sentence that states the rule it qualifies.
+- Convert a prose list of conditions into a bulleted list, or the reverse.
+- Replace a passive construction with an active one naming the actor.
+
+Apply each move only where it is applicable; record applicability per clause. Each pair is checked for
+meaning preservation, which is far simpler for a single edit than for a whole rewrite. The task and
+response format are fixed; the model receives a short context containing the clause and its immediate
+dependencies, identical across the pair except for the edit.
+
+### Outcomes and analysis
+
+Primary outcome: paired accuracy difference (edited minus original) per editing move, averaged over
+clauses and models with equal weights. Report the number of eligible clauses per move. Secondary:
+confidently-wrong rate per move, and whether moves interact when two are applied together on a small
+subset (exploratory only). The output is a ranked table of editing moves with effect sizes and
+denominators: an evidence-based style guide for machine-readable drafting.
+
+### Interpretation and limitations
+
+Short contexts make this design cheap to run and easy to review, and the per-move attribution is more
+useful to a drafting team than knowing that a complete rewrite helps. Limitations: single edits may have
+small effects that need many clauses to detect; effects in a short context may not transfer to a full
+document where finding the clause is the harder problem; and the catalogue itself is a choice that
+determines what the study can find. Use v4 arm B material as the clause source so results connect to the
+main protocol.
+
+## Dependency distance
+
+### Question and conditions
+
+Many extraction errors involve a rule and a qualifier (exception, definition, limit) that sit far apart.
+How does accuracy decay with the distance between them? Take rule-qualifier pairs from the v4 evidence
+packets and construct inputs in which the rule stays fixed and the qualifier is placed at controlled
+distances: adjacent; roughly one page later; five pages; twenty pages; in a separately labelled
+supplementary document appended after the main text. Fill the intervening space with checked, irrelevant
+text from the same bundle so register and vocabulary are held constant. Include a condition with the
+qualifier absent, whose correct answer is the unqualified rule, so models that invent qualifiers are
+detected.
+
+### Outcomes and analysis
+
+Primary outcome: accuracy as a function of distance, per model, with the correct answer requiring the
+qualifier. Fit a simple monotone curve per model and report the distance at which accuracy falls below a
+prespecified level; report the absent-qualifier condition separately as a false-qualification rate.
+Secondary: whether failures are omissions (qualifier ignored) or substitutions (a different qualifier
+from the padding applied), which the padding text should be chosen to make detectable.
+
+### Interpretation and limitations
+
+The deliverable is a placement rule that a document designer can use: how close an exception must sit to
+the rule it qualifies for agents to link them reliably. The construction is mechanical and cheap once the
+evidence packets exist. Limitations: distance in tokens is not the only variable moved (intervening
+material also changes), the padding is drawn from the same document and may contain competing rules, and
+the result is specific to the context lengths and models tested. It is a controlled probe of one failure
+mechanism, not a measure of a whole document.
+
+## Navigating agent
+
+### Question and conditions
+
+Real agents rarely receive a whole PDS as context. They open a PDF, read the contents page, search for
+terms and jump between pages. How navigable is a PDS for a tool-using agent? Give the model no document
+text up front but three tools over the checked, page-labelled bundle: `contents()` returning the table of
+contents and headings with page numbers; `search(term)` returning page numbers and short snippets; and
+`read_page(n)` returning one page. Fix a step budget (for example twelve tool calls) and the same task
+wording and response format as v4. Compare against arm A on the same tasks.
+
+Two variants isolate the navigational apparatus: one where `contents()` returns the insurer's own table of
+contents and headings, and one where it returns a neutral, uniform list of page numbers only. The
+difference measures how much the insurer's own structure helps or hinders.
+
+### Outcomes and analysis
+
+Primary outcome: task accuracy within the step budget, paired with arm A. Secondary: number of tool calls
+to a correct answer, pages read, whether the first `search` term matches the insurer's terminology (a
+proxy for vocabulary alignment), and the rate of giving up or answering without reading the governing
+clause. Report trajectories for a sample of tasks as qualitative evidence.
+
+### Interpretation and limitations
+
+This is agentic readability in the literal sense and the condition closest to how shopping agents will
+operate. Its cost is moderate (several short calls per task rather than one long one) and it uses the
+existing bundles directly. Limitations: results depend on the tool design and step budget, which are
+choices; models differ in tool-use skill independent of the document; and the simulated tools are a
+simplification of real PDF viewers and retrieval stacks. Freeze the tool definitions and budget before
+the run and treat tool-use skill as a model property that the paired comparison with arm A partially
+controls.
+
+## Paraphrase robustness
+
+### Question and conditions
+
+Does a model's extraction stay correct when the same task is asked in different ways? For each v4 task,
+freeze five phrasings: the protocol wording; a consumer's informal question; a scenario ("my pipe leaked
+for months, am I covered?"); a negated form ("is gradual water damage excluded?"); and a vague form that
+names the topic without specifying the detail. All five are answered against the same input (arm A or
+B), with the reference answer unchanged. Because the long document prefix is identical across phrasings,
+prompt caching makes the marginal cost of the extra four phrasings small.
+
+### Outcomes and analysis
+
+Primary outcome: the proportion of tasks answered correctly under all five phrasings (strict consistency),
+alongside mean accuracy per phrasing. Secondary: which phrasing types fail most, whether negated phrasing
+flips answers, and whether robustness differs by arm (does supplying evidence or a standardised rewrite
+make answers more stable, not just more accurate?). Report per model.
+
+### Interpretation and limitations
+
+Consumers do not ask in protocol wording. A document whose rules survive paraphrase is more robustly
+readable than one that yields the right answer only to the right question. The design is almost free to
+add to v4 and needs no new reference material beyond checking that each phrasing targets the same
+reference answer. Limitations: phrasings are a small sample of how people ask; negated and vague forms
+may have legitimately different acceptable answers that the reference set must anticipate; and
+inconsistency is a model property as well as a document property, so compare across documents within
+model rather than across models.
+
 ## Decisions before adopting a design
 
-Choose the research question first, then select one core design. For presentation improvement, the
-factorial is the leading candidate; for document faithfulness, choose controlled policy changes; for
-version handling or comparison reliability, choose the corresponding operational experiment.
+Choose the research question first, then select one core design. For a first result with no construction
+work, the sibling-brand natural experiment can run as soon as v4 reference records exist. For presentation
+improvement, the factorial and the minimal-pair catalogue are the leading candidates, with minimal pairs
+giving finer attribution and the factorial testing interaction. For document faithfulness, choose
+controlled policy changes. For version handling or comparison reliability, choose the corresponding
+operational experiment. The navigating agent is the design closest to real agent behaviour and is the
+natural second study once v4 establishes baseline extraction performance. Paraphrase robustness is an
+add-on to any of them.
 
 Before replacing or extending v4, settle the exact bundles and tasks, intervention rules, human-review
 arrangements, primary contrast, repeat schedule, output budget and analysis plan. Measure token usage

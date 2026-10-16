@@ -1,120 +1,347 @@
 # PDS manifest: one entry per insurer brand x product line.
-# status: current URL believed to be the latest PDS as at Oct 2026 (verify dates after download)
-# group = parent underwriter / group, useful for analysis (brands in a group often share a template)
+# url/parts = the base PDS (and Part B where the insurer splits it). supplements = supplementary PDSs (SPDS) that
+# amend the base PDS. A *policy bundle* = base PDS + parts + all applicable supplements; applicability must be
+# verified against the stated effective dates before use in any experiment (see EXPERIMENT.md section 2).
+# Labels with "(verify ...)" flag supplements whose applicability to the listed base PDS version is not yet confirmed.
+# group = parent underwriter / group, useful for analysis (brands in a group often share a template).
 insurers:
   nrma:
     name: NRMA Insurance
     group: IAG
     products:
-      car:      {url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/car/nrma-car-pds-nrmamotpds-rev2-0923.pdf, label: Car Insurance PDS Apr 2024}
-      home:     {url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf, label: Home Insurance PDS Apr 2024}
-      landlord: {url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf, label: Landlord Insurance PDS Apr 2024}
-      travel:   {url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/travel/nrma-travel-pds-g016569-rev13-0426.pdf, label: Travel Insurance PDS Apr 2026}
+      car:
+        url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/car/nrma-car-pds-nrmamotpds-rev2-0923.pdf
+        label: Car Insurance PDS Apr 2024
+      home:
+        url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf
+        label: Home Insurance PDS Apr 2024
+        supplements:
+        - url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev0-0524.pdf
+          label: Home SPDS May 2024
+        - url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev1-0225.pdf
+          label: Home SPDS Feb 2025
+        - url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-spds-nrmahomspds-rev2-1125.pdf
+          label: Home SPDS Nov 2025
+      landlord:
+        url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-pds-nrmalanpds-rev2-0923.pdf
+        label: Landlord Insurance PDS Apr 2024
+        supplements:
+        - url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-landlord-spds-nrmalanspds-rev0-0524.pdf
+          label: Landlord SPDS May 2024
+      travel:
+        url: https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/travel/nrma-travel-pds-g016569-rev13-0426.pdf
+        label: Travel Insurance PDS Apr 2026
   cgu:
     name: CGU
     group: IAG
     products:
-      car:      {url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-motor-vehicle-pds-pid0301-a4-rev20-0622.pdf, label: Motor Vehicle PDS Jul 2022}
-      home:     {url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf, label: Quality Listed Events Home PDS Jul 2023}
-      landlord: {url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf, label: Landlord PDS Jul 2023}
-      travel:   {url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-travel-pds-tv0033-rev32-0721.pdf, label: Travel PDS Aug 2021}
+      car:
+        url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-motor-vehicle-pds-pid0301-a4-rev20-0622.pdf
+        label: Motor Vehicle PDS Jul 2022
+        supplements:
+        - url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-motor-vehicle-spds-spds477-a4-rev0-0625.pdf
+          label: Motor SPDS Jul 2025
+      home:
+        url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf
+        label: Quality Listed Events Home PDS Jul 2023
+        supplements:
+        - url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-spds-spds476-a4-rev0-0625.pdf
+          label: Listed Events Home SPDS Jul 2025
+      landlord:
+        url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-pds-pid0300-f-rev10-0623.pdf
+        label: Landlord PDS Jul 2023
+        supplements:
+        - url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-landlord-spds-spds484-a4-rev0-0625.pdf
+          label: Landlord SPDS Jul 2025
+      travel:
+        url: https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-travel-pds-tv0033-rev32-0721.pdf
+        label: Travel PDS Aug 2021
   racv:
     name: RACV
     group: IAG (IMA)
     products:
-      car:      {url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/motor-insurance/pds/motor-insurance-pds-current.pdf, label: Motor Insurance PDS (current)}
-      home:     {url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf, label: Home Insurance PDS (current)}
-      landlord: {url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/landlord-insurance-pds-current.pdf, label: Landlord Insurance PDS (current)}
+      car:
+        url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/motor-insurance/pds/motor-insurance-pds-current.pdf
+        label: Motor Insurance PDS (current)
+      home:
+        url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf
+        label: Home Insurance PDS (current)
+      landlord:
+        url: https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/landlord-insurance-pds-current.pdf
+        label: Landlord Insurance PDS (current)
+    note: No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before bundle assembly.
   coles:
     name: Coles Insurance
     group: Auto & General
     products:
-      car:      {url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSA.pdf, label: Car PDS Part A, parts: [https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSB.pdf]}
-      home:     {url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf, label: Home Insurance PDS}
+      car:
+        url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSA.pdf
+        label: Car PDS Part A
+        parts:
+        - https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/PDSB.pdf
+        supplements:
+        - url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/car/SPDS.pdf
+          label: Car SPDS (new policies from 11 Dec 2025)
+      home:
+        url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf
+        label: Home Insurance PDS
+        supplements:
+        - url: https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/SPDSEXCL.pdf
+          label: Home SPDS Jun 2026
   aami:
     name: AAMI
     group: Suncorp
     products:
-      car:      {url: https://www.aami.com.au/assets/documents/aami/motor/car/aami-comprehensive-car-insurance-pds.pdf, label: Comprehensive Car PDS}
-      home:     {url: https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf, label: Home Building PDS}
-      contents: {url: https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds-a01464.pdf, label: Home Contents PDS}
-      landlord: {url: https://www.aami.com.au/assets/documents/aami/home/aami-landlord-insurance-pds-a01460.pdf, label: Landlord PDS}
+      car:
+        url: https://www.aami.com.au/assets/documents/aami/motor/car/aami-comprehensive-car-insurance-pds.pdf
+        label: Comprehensive Car PDS
+        supplements:
+        - url: https://www.aami.com.au/assets/documents/aami/motor/car/aami-comprehensive-car-insurance-spds-a03806-27-07-22-a-lr.pdf
+          label: Car SPDS Jul 2022
+        - url: https://www.aami.com.au/assets/documents/aami/motor/car/e88711-a03772-040821-a-aami-motor-market-value-spds-lr.pdf
+          label: Motor market value SPDS Aug 2021
+        - url: https://www.aami.com.au/assets/documents/aami/multi-stream/spds-aami-a03716b.pdf
+          label: Multi-product SPDS a03716b
+      home:
+        url: https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf
+        label: Home Building PDS
+        supplements:
+        - url: https://www.aami.com.au/assets/documents/aami/home/aami-building-insurance-spds-a03801-27-07-22-a-lr.pdf
+          label: Building SPDS Jul 2022
+        - url: https://www.aami.com.au/assets/documents/aami/home/aami-home-building-spds-101120.pdf
+          label: Building SPDS Nov 2020
+      contents:
+        url: https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-pds-a01464.pdf
+        label: Home Contents PDS
+        supplements:
+        - url: https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-insurance-spds-a03802-27-07-22-a-lr.pdf
+          label: Contents SPDS Jul 2022
+        - url: https://www.aami.com.au/assets/documents/aami/home/aami-home-contents-spds-101120.pdf
+          label: Contents SPDS Nov 2020
+      landlord:
+        url: https://www.aami.com.au/assets/documents/aami/home/aami-landlord-insurance-pds-a01460.pdf
+        label: Landlord PDS
+        supplements:
+        - url: https://www.aami.com.au/assets/documents/aami/home/aami-landlord-insurance-spds-a03804-27-07-22-a-lr.pdf
+          label: Landlord SPDS Jul 2022
+        - url: https://www.aami.com.au/assets/documents/aami/multi-stream/spds-aami-a03716b.pdf
+          label: Multi-product SPDS a03716b
   gio:
     name: GIO
     group: Suncorp
     products:
-      car:      {url: https://www.gio.com.au/documents/car-and-vehicle/car/gio-car-insurance-pds.pdf, label: Car Insurance PDS}
-      home:     {url: https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf, label: Home & Contents PDS May 2025}
-      landlord: {url: https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-insurance-pds-22217-24-05-25-a.pdf, label: Landlord PDS May 2025}
+      car:
+        url: https://www.gio.com.au/documents/car-and-vehicle/car/gio-car-insurance-pds.pdf
+        label: Car Insurance PDS
+        supplements:
+        - url: https://www.gio.com.au/documents/car-and-vehicle/car/gio-car-insurance-spds.pdf
+          label: Car SPDS (current, undated URL)
+        - url: https://www.gio.com.au/documents/car-and-vehicle/car/gio-motor-market-value-spds.pdf
+          label: Motor market value SPDS
+        - url: https://www.gio.com.au/documents/car-and-vehicle/vehicle-insurance-spds.pdf
+          label: Vehicle insurance SPDS (multi-product)
+      home:
+        url: https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf
+        label: Home & Contents PDS May 2025
+        supplements:
+        - url: https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-spds.pdf
+          label: Home & Contents SPDS (current, undated URL)
+        - url: https://www.gio.com.au/documents/home-and-contents/home/gio-home-and-content-spds-041126.pdf
+          label: Home & Contents SPDS dated 04/11/26 (pre-published; verify effective date)
+      landlord:
+        url: https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-insurance-pds-22217-24-05-25-a.pdf
+        label: Landlord PDS May 2025
+        supplements:
+        - url: https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-insurance-spds.pdf
+          label: Landlord SPDS (current, undated URL)
+        - url: https://www.gio.com.au/documents/home-and-contents/landlord/gio-landlord-spds-041126.pdf
+          label: Landlord SPDS dated 04/11/26 (verify effective date)
   suncorp:
     name: Suncorp Insurance
     group: Suncorp
     products:
-      car:      {url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/car-insurance-pds.pdf, label: Car Insurance PDS}
-      home:     {url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf, label: Home & Contents PDS May 2025}
-      landlord: {url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf, label: Landlord PDS May 2025}
+      car:
+        url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/car-insurance-pds.pdf
+        label: Car Insurance PDS
+        supplements:
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/suncorp-car-insurance-spds-31786.pdf
+          label: Car SPDS 31786 (Sep 2022)
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/car-and-vehicle/car/suncorp-car-insurance-spds-4-8-21.pdf
+          label: Car SPDS Aug/Sep 2021
+      home:
+        url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf
+        label: Home & Contents PDS May 2025
+        supplements:
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-contents-spds-32462-18-08-26-a.pdf
+          label: Home & Contents SPDS Aug 2026
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home-landlord-insurance-spds.pdf
+          label: Home & Landlord SPDS (undated URL)
+      landlord:
+        url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-ins-pds-12315-24-05-25-a.pdf
+        label: Landlord PDS May 2025
+        supplements:
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/landlord/suncorp-landlord-spds-32463-18-08-26-a.pdf
+          label: Landlord SPDS Aug 2026
+        - url: https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home-landlord-insurance-spds.pdf
+          label: Home & Landlord SPDS (undated URL)
   apia:
     name: Apia
     group: Suncorp
     products:
-      car:      {url: https://www.apia.com.au/content/dam/suncorp/apia/documents/car/apia-car-advantage-insurance-pds-3-11-20.pdf, label: Car Advantage PDS Nov 2020}
-      home:     {url: https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf, label: Home & Contents PDS Jun 2025}
-      landlord: {url: https://www.apia.com.au/content/dam/suncorp/apia/documents/landlord/apia-landlord-pds-ap02611-21-06-25-a.pdf, label: Landlord PDS Jun 2025}
+      car:
+        url: https://www.apia.com.au/content/dam/suncorp/apia/documents/car/apia-car-advantage-insurance-pds-3-11-20.pdf
+        label: Car Advantage PDS Nov 2020
+        supplements:
+        - url: https://www.apia.com.au/content/dam/suncorp/apia/documents/car/apia-car-advantage-spds-ap03881-10-08-22-a-lr.pdf
+          label: Car Advantage SPDS Aug 2022
+        - url: https://www.apia.com.au/content/dam/suncorp/apia/documents/apia-combined-ncb-spds-ap03913-27-06-26-a-lr.pdf
+          label: NCB SPDS Jun 2026
+      home:
+        url: https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf
+        label: Home & Contents PDS Jun 2025
+        supplements:
+        - url: https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-and-contents-spds-ap03875-10-08-22-a.pdf
+          label: Home & Contents SPDS Aug 2022 (verify applies to Jun 2025 PDS)
+      landlord:
+        url: https://www.apia.com.au/content/dam/suncorp/apia/documents/landlord/apia-landlord-pds-ap02611-21-06-25-a.pdf
+        label: Landlord PDS Jun 2025
+        supplements:
+        - url: https://www.apia.com.au/content/dam/suncorp/apia/documents/landlord/apia-landlord-spds-ap03877-10-08-22-a.pdf
+          label: Landlord SPDS Aug 2022 (verify applies to Jun 2025 PDS)
   allianz:
     name: Allianz Australia
     group: Allianz
     products:
-      car:      {url: "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1428DIR022620260222/$FILE/POL1428DIR.pdf?open", label: Car Insurance PDS Feb 2026}
-      home:     {url: "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open", label: Home Insurance PDS Jul 2025}
-      landlord: {url: "https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open", label: Landlord Insurance PDS Jul 2025}
-      travel:   {url: https://travel.allianz.com.au/pds, label: Travel Insurance PDS}
+      car:
+        url: https://www.einsure.com.au/wb/public/openPolicyDocument/POL1428DIR022620260222/$FILE/POL1428DIR.pdf?open
+        label: Car Insurance PDS Feb 2026
+      home:
+        url: https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open
+        label: Home Insurance PDS Jul 2025
+        supplements:
+        - url: https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS653DIR1024/$FILE/SPDS653DIR.pdf?open
+          label: Home SPDS Oct 2024 (likely applies to pre-Jul-2025 PDS; verify)
+        - url: https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS654DIR1024/$FILE/SPDS654DIR.pdf?open
+          label: Home SPDS Oct 2024 (b)
+      landlord:
+        url: https://www.einsure.com.au/wb/public/openPolicyDocument/POL1419DIR042520250720/$FILE/POL1419DIR.pdf?open
+        label: Landlord Insurance PDS Jul 2025
+        supplements:
+        - url: https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS651DIR1024/$FILE/SPDS651DIR.pdf?open
+          label: Landlord SPDS Oct 2024 (verify applicability)
+        - url: https://www.einsure.com.au/wb/public/openPolicyDocument/SPDS652DIR1024/$FILE/SPDS652DIR.pdf?open
+          label: Landlord SPDS Oct 2024 (b)
+      travel:
+        url: https://travel.allianz.com.au/pds
+        label: Travel Insurance PDS
   budget_direct:
     name: Budget Direct
     group: Auto & General
     products:
-      car:      {url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSA.pdf, label: Car PDS Part A, parts: [https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSBGD.pdf]}
-      home:     {url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf, label: Home Insurance PDS}
-      travel:   {url: https://policy.travelinsurancepartners.com.au/partners/budgetdirect/files/documents/pds/PDS_BDB_BDC.pdf, label: Travel PDS}
+      car:
+        url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSA.pdf
+        label: Car PDS Part A
+        parts:
+        - https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/PDSBGD.pdf
+        supplements:
+        - url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/car/SPDS.pdf
+          label: Car SPDS (current)
+      home:
+        url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf
+        label: Home Insurance PDS
+        supplements:
+        - url: https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/SPDSBUDD.pdf
+          label: Home SPDS (new policies from 25 Jun 2026, renewals from 2 Aug 2026)
+      travel:
+        url: https://policy.travelinsurancepartners.com.au/partners/budgetdirect/files/documents/pds/PDS_BDB_BDC.pdf
+        label: Travel PDS
   youi:
     name: Youi
     group: Youi (OUTsurance)
     products:
-      car:      {url: "https://www.youi.com.au/GetPDS?riskType=VEH&effectiveDate=20250702", label: Car Insurance PDS Jul 2025}
-      home:     {url: "https://www.youi.com.au/documents/home-pds", label: Home Insurance PDS Jul 2026 (URL serves PDF directly)}
+      car:
+        url: https://www.youi.com.au/GetPDS?riskType=VEH&effectiveDate=20250702
+        label: Car Insurance PDS Jul 2025
+      home:
+        url: https://www.youi.com.au/documents/home-pds
+        label: Home Insurance PDS Jul 2026 (URL serves PDF directly)
+    note: No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before bundle assembly.
   racq:
     name: RACQ
     group: RACQ
     products:
-      car:      {url: "https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/motor-vehicle-insurance/pds-racq-motor-vehicle-insurance-091224-rcmv2-1224.pdf", label: Motor Vehicle PDS Dec 2024}
-      home:     {url: "https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf", label: Household Insurance PDS Dec 2024 (owner/landlord/renter)}
-      travel:   {url: "https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/travel-insurance/racq-travel-insurance-pds-31-march-2026-v2.pdf", label: Travel PDS Mar 2026}
+      car:
+        url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/motor-vehicle-insurance/pds-racq-motor-vehicle-insurance-091224-rcmv2-1224.pdf
+        label: Motor Vehicle PDS Dec 2024
+        supplements:
+        - url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/motor-vehicle-insurance/spds-racq-motor-vehicle-insurance-28072025-rcmv9-0825.pdf
+          label: Motor SPDS RCMV9.0825
+        - url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/motor-vehicle-insurance/spds-racq-motor-vehicle-insurance-06122025-rcmv9-0126.pdf
+          label: Motor SPDS RCMV9.0126
+      home:
+        url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf
+        label: Household Insurance PDS Dec 2024 (owner/landlord/renter)
+        supplements:
+        - url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/spds/household-insurance/spds-racq-household-28072025-rhhb9-0825.pdf
+          label: Household SPDS RHHB9.0825
+      travel:
+        url: https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/travel-insurance/racq-travel-insurance-pds-31-march-2026-v2.pdf
+        label: Travel PDS Mar 2026
   real:
     name: Real Insurance
     group: Hollard
-    note: realinsurance.com.au returned HTTP 503 to every client (incl. Chrome) on 16 Oct 2026 - retry later
+    note: realinsurance.com.au returned HTTP 503 to every client (incl. Chrome) on 16 Oct 2026 - retry later No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before bundle
+      assembly.
     products:
-      car:      {url: https://www.realinsurance.com.au/documents/real-car-insurance-pds-july-2026.pdf, label: Car PDS Jul 2026}
-      home:     {url: https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf, label: Home PDS Jul 2026}
-      landlord: {url: https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf, label: Landlords PDS Jul 2026}
+      car:
+        url: https://www.realinsurance.com.au/documents/real-car-insurance-pds-july-2026.pdf
+        label: Car PDS Jul 2026
+      home:
+        url: https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf
+        label: Home PDS Jul 2026
+      landlord:
+        url: https://www.realinsurance.com.au/documents/real-landlords-insurance-pds-july-2026.pdf
+        label: Landlords PDS Jul 2026
   everyday:
     name: Everyday Insurance (ex Woolworths)
     group: Hollard
     products:
-      car:      {url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Car/UsefulDocumentsCar/Everyday-Car-Insurance-PDS-Jul-26.pdf, label: Car PDS Jul 2026}
-      home:     {url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf, label: Home PDS Jul 2026}
-      landlord: {url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Landlords/UsefulDocumentsLandlords/Everyday_Landlords_Insurance_PDS-Jul-26.pdf, label: Landlords PDS Jul 2026}
+      car:
+        url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Car/UsefulDocumentsCar/Everyday-Car-Insurance-PDS-Jul-26.pdf
+        label: Car PDS Jul 2026
+      home:
+        url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf
+        label: Home PDS Jul 2026
+      landlord:
+        url: https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Landlords/UsefulDocumentsLandlords/Everyday_Landlords_Insurance_PDS-Jul-26.pdf
+        label: Landlords PDS Jul 2026
+    note: No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before bundle assembly.
   qbe:
     name: QBE
     group: QBE
-    note: qbe.com.au HTML is 403 to scripts; PDFs live on qmdocumentlibrary.qbe.com (links harvested via browser)
+    note: qbe.com.au HTML is 403 to scripts; PDFs live on qmdocumentlibrary.qbe.com (links harvested via browser) No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before
+      bundle assembly.
     products:
-      car:      {url: "https://qmdocumentlibrary.qbe.com/getfile?revision=4CE7334B-98D3-46EE-B6AE-A580B70F5D54", label: Comprehensive Car PDS QM8505-1123}
-      home:     {url: "https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763", label: Home Insurance PDS QM8697-1124}
-      landlord: {url: "https://qmdocumentlibrary.qbe.com/getfile?revision=8B024B34-0FCB-402A-9462-C0FF59805FAF", label: Landlord Insurance PDS QM8699-1124}
+      car:
+        url: https://qmdocumentlibrary.qbe.com/getfile?revision=4CE7334B-98D3-46EE-B6AE-A580B70F5D54
+        label: Comprehensive Car PDS QM8505-1123
+      home:
+        url: https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763
+        label: Home Insurance PDS QM8697-1124
+      landlord:
+        url: https://qmdocumentlibrary.qbe.com/getfile?revision=8B024B34-0FCB-402A-9462-C0FF59805FAF
+        label: Landlord Insurance PDS QM8699-1124
   rac_wa:
     name: RAC WA
     group: RAC
     products:
-      car:      {url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/rac_car_pds_28082024.pdf, label: Car PDS & FSG Aug 2024}
-      home:     {url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf, label: Building Contents & Valuables PDS & FSG Feb 2021}
-      landlord: {url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/landlords-pds-25022021.pdf, label: Landlords PDS & FSG Feb 2021}
+      car:
+        url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/rac_car_pds_28082024.pdf
+        label: Car PDS & FSG Aug 2024
+      home:
+        url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf
+        label: Building Contents & Valuables PDS & FSG Feb 2021
+      landlord:
+        url: https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/landlords-pds-25022021.pdf
+        label: Landlords PDS & FSG Feb 2021
+    note: No supplementary PDS found on the public document page as at 16 Oct 2026; re-check before bundle assembly.

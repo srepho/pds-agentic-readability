@@ -1,0 +1,64 @@
+# DRAFT task bank for home buildings extraction (EXPERIMENT.md section 3). Status: unreviewed draft.
+# Twenty tasks, five per category. The pilot uses twelve (three per category): the ones marked pilot: true.
+# Each task will need, per bundle: reference_state, required_elements, acceptable_alternatives, evidence_spans.
+# Tasks are phrased to require material qualifications, not a bare covered / not-covered label.
+# Do NOT revise this bank after looking at model outputs (selection on observed errors biases the benchmark).
+version: 0.1-draft
+product: home_buildings
+categories:
+  direct_statements:
+    - id: DS1
+      pilot: true
+      task: "State whether storm damage to the building is an insured event, and list every stated condition or carve-out attached to the storm event itself (e.g. storm surge, water entering through open windows, damage to retaining walls, gates or fences)."
+    - id: DS2
+      pilot: true
+      task: "State whether flood is covered under the base policy, whether flood cover can be removed or added, and how the policy defines flood."
+    - id: DS3
+      pilot: true
+      task: "State the policy's settlement basis for a total loss of the building (sum insured, sum insured plus a safety-net percentage, or total replacement), including the percentage where one applies and any conditions on it."
+    - id: DS4
+      task: "State whether damage caused by escape of liquid is covered, distinguishing sudden and gradual escape, and list any exclusions attached to the escape-of-liquid event."
+    - id: DS5
+      task: "State whether theft or attempted theft is an insured event for the building, and any requirement about forced or violent entry, occupancy or security."
+  limits_and_settlement:
+    - id: LS1
+      pilot: true
+      task: "Extract the temporary accommodation benefit: its maximum amount or percentage, its maximum duration, the trigger for payment, and any conditions on eligibility."
+    - id: LS2
+      pilot: true
+      task: "Extract the limit, if any, for removal of debris and demolition costs, and whether it sits inside or in addition to the building sum insured."
+    - id: LS3
+      pilot: true
+      task: "Extract how the policy treats unoccupancy: the number of consecutive days after which cover changes, exactly what changes (which events or benefits are excluded, or which excess applies), and any way to preserve cover."
+    - id: LS4
+      task: "Extract the limits for landscaping, trees, plants and shrubs after an insured event, including the per-item or aggregate amount and the events to which the benefit applies."
+    - id: LS5
+      task: "Extract the rebuilding professional fees benefit (architects, surveyors, legal fees): its amount or percentage and whether it is in addition to the sum insured."
+  qualifications:
+    - id: Q1
+      pilot: true
+      task: "State whether damage caused by tree roots is excluded, including any distinction between damage to the building and damage to pipes or drains, and any resultant-damage carve-back."
+    - id: Q2
+      pilot: true
+      task: "State the policy's position on mould, mildew or rising damp: whether excluded outright, or covered only when resulting from a specified insured event, and name those events."
+    - id: Q3
+      pilot: true
+      task: "State whether damage from building defects, faulty workmanship or faulty design is excluded, and whether resultant damage from an otherwise insured event remains covered."
+    - id: Q4
+      task: "State the earthquake and tsunami cover position, including any special excess, any time window that aggregates multiple shocks, and any exclusion of landslide or subsidence unless caused by a named event."
+    - id: Q5
+      task: "State whether damage by insects, vermin, birds or domestic animals is excluded, and any exceptions (e.g. resulting fire, glass breakage, or damage by animals not kept at the home)."
+  distributed_evidence:
+    - id: DE1
+      pilot: true
+      task: "Determine whether the policy pays to rebuild to current building codes or standards after a partial loss (extra costs of compliance), combining the benefit clause, any limit, and the policy's definition of building."
+    - id: DE2
+      pilot: true
+      task: "Determine which items at the insured address are inside the definition of 'building' versus 'contents' (e.g. fixed floor coverings, built-in appliances, solar panels, swimming pools, fences, sheds), combining the definitions section with any specific inclusions or exclusions."
+    - id: DE3
+      pilot: true
+      task: "Determine the excess payable for a storm claim where the policy also imposes an additional or special excess (e.g. for unoccupancy or a nominated high-risk feature), combining the excess section, the schedule dependency and any excess waiver for total loss."
+    - id: DE4
+      task: "Determine the cooling-off period and the refund basis on cancellation after the cooling-off period, combining the cooling-off clause, the cancellation clause and any statement on non-refundable fees or minimum premiums."
+    - id: DE5
+      task: "Determine whether accidental damage to the building (not caused by a listed event) is covered, combining the base cover description, any optional accidental-damage cover, and the exclusions that apply only to accidental damage."
