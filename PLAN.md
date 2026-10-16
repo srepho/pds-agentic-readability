@@ -1,74 +1,60 @@
-# PDS Readability Benchmark — Project Plan
+# PDS Agentic Readability — Project Plan
 
-Compare the readability of Product Disclosure Statements (PDS) across major Australian
-general insurers and personal-lines products, using (a) classical readability formulas and
-(b) a panel of LLMs as judges, then compare the two.
+The active protocol is [EXPERIMENT.md](EXPERIMENT.md), design v4. The project measures faithful
+reconstruction of policy rules and tests whether a standardised presentation improves it.
 
-## 1. Scope
+## 1. First study
 
-**Insurer brands (by group)** — brands within a group often share a document template, so
-analyse both at brand level and group level.
+Start with home buildings, eight complete policy bundles, twenty common extraction tasks and three
+models from different families. Use a separate development set. Compare each policy-task-model in
+three independent conditions:
 
-| Group | Brands |
-|---|---|
-| IAG | NRMA, CGU, RACV (IMA JV), Coles (A&G-manufactured, see below) |
-| Suncorp | AAMI, GIO, Suncorp, Apia |
-| Allianz | Allianz |
-| Auto & General | Budget Direct, Coles Insurance |
-| Hollard | Real Insurance, Everyday (ex Woolworths) |
-| QBE | QBE |
-| Youi | Youi |
-| Motoring clubs | RACQ (QLD), RAC (WA) |
+- A: complete checked policy text.
+- B: all relevant original evidence, including definitions and exceptions.
+- C: the same evidence in a standardised, independently checked plain-language presentation.
 
-**Product lines**: Comprehensive Car, Home (building & contents), Landlord, Travel.
-Optional later: CTP (state schemes), Pet, Caravan, Motorcycle, Life (different regime).
+Primary outcome: correct task answers including all material qualifications. Primary contrast: C-B.
+B-A diagnoses the benefit of supplying evidence, including changes in context burden. Original-document
+accuracy remains a descriptive benchmark. This pilot does not establish human readability or support
+an industry-wide insurer ranking.
 
-## 2. Pipeline
+## 2. Existing collection pipeline
 
 ```
-manifest.yaml --> download_pds.py --> data/raw_pds/<insurer>/<product>.pdf
-                                   --> extract_text.py --> data/text/<insurer>/<product>.{md,json}
-                                   --> metrics_classical.py --> data/metrics_classical.csv
-                                   --> metrics_llm.py       --> data/metrics_llm.csv
-                                   --> analysis notebook / report
+manifest.yaml -> download_pds.py -> raw PDFs
+                               -> extract_text.py -> per-PDF text and metadata
+                                                  -> metrics_classical.py -> first-pass metrics
 ```
 
-### 2a. Text extraction & segmentation
-- PyMuPDF for text; keep page numbers; strip headers/footers/TOC; detect two-column layouts.
-- Segment into sections by heading (e.g. "What we cover", "Exclusions", "Making a claim",
-  "Definitions") so sections can be compared like-for-like across insurers.
-- Record structural stats: pages, words, sentences, tables, defined terms, cross-references.
+The manifest spans car, home, landlord and travel. The local inventory on 16 October 2026 contains
+49 PDFs, including separate car Part B files. Files, complete policy bundles and independent templates
+are different units. The existing scripts do not yet assemble or validate complete bundles.
 
-### 2b. Classical metrics (textstat + custom)
-- Flesch Reading Ease, Flesch–Kincaid grade, Gunning Fog, SMOG, Coleman–Liau, ARI, Dale–Chall.
-- Avg sentence length, % long sentences (>25 words), % passive voice, % words >3 syllables,
-  defined-term density, cross-reference density ("see section..."), negation density
-  ("not", "unless", "except"), conditionals ("if", "provided that").
-- Lexical: type–token ratio, jargon list hits (insurance-specific wordlist).
+Classical metrics use naive extraction and remain provisional. They are descriptive context, not the
+primary outcome or a validated measure of human comprehension. Fix reading order, tables, bullets and
+page mapping before using text in the experiment.
 
-### 2c. LLM-as-judge metrics
-Models: a Claude model (claude-sonnet-5-5 / claude-opus-5-5), GPT, Gemini — see
-`claude-api` skill before wiring up the Anthropic client. Each model scores each section
-(and whole doc) on a rubric, e.g. 1–7 scale with written justification:
-- Plain-language clarity; Sentence complexity; Jargon/defined-term burden
-- Logical structure & navigability; Transparency of exclusions/limits
-- "Could a 15-year-old explain what is/isn't covered after reading this?"
-Also comprehension probes: give the LLM the section and 5 fixed factual questions
-(e.g. "Is flood covered by default?"), measure accuracy — a proxy for findability.
-Controls: fixed temperature, same prompt, randomised doc order, repeat 3x for variance,
-inter-model agreement (Krippendorff's alpha), and correlation with classical metrics.
+## 3. Implementation milestones
 
-### 2d. Analysis & outputs
-- League tables by product line and by group; classical vs LLM agreement.
-- Section-level heatmaps (which sections are hardest industry-wide).
-- Longitudinal option: older PDS versions are still hosted for most brands — can compare
-  2018 → 2021 → 2025 to see whether readability has improved (ASIC/plain-language push).
-- Report as HTML artifact / notebook.
+1. **Corpus:** assemble complete versioned bundles, record applicable supplements and missing dependencies,
+   verify product configurations and template families, and hash every source.
+2. **Extraction QA:** create checked, page-labelled text with source mapping; retain raw extraction.
+3. **Annotation:** freeze the twenty-task bank, reference answers, complete evidence packets and rewrite
+   template. Review all keys and packets; independently review rewrites and difficult cases.
+4. **Development:** test prompts, typed response validation, scoring, retry policy and token costs on a
+   separate set. Decide and document exclusions before evaluation.
+5. **Protocol freeze:** register model settings, input/reference hashes, eligibility, repeat selection,
+   weights and analysis settings before evaluation outputs are inspected.
+6. **Evaluation:** run fresh A/B/C sessions, preserve outputs and provenance, and score using the frozen key.
+7. **Report:** show per-policy paired performance, model-specific differences, uncertainty, error examples,
+   intervention eligibility and rewrite acceptance. Use pilot variability to size a larger study.
 
-## 3. Caveats
-- PDS length/structure differs (AAMI splits building and contents; RACQ has one Household
-  PDS covering owner, landlord and renter; Budget Direct/Coles split car into Part A/B).
-- Some PDSs are combined PDS+FSG (travel, Everyday). Normalise by analysing PDS portion.
-- Check each file's preparation date; keep `data/download_log.csv` as provenance.
-- Copyright: documents are public disclosure documents; fine for internal analysis.
-  Don't redistribute the PDFs themselves.
+Likely new components: a bundle manifest/validator, checked-text preparation, task/reference records,
+evidence/rewrite preparation, an evaluation runner, scoring/adjudication tools and an analysis report.
+These are planned components, not implemented commands.
+
+## 4. Later extensions
+
+After validating the pilot, consider more product lines, a broader model panel, native-PDF inputs,
+larger extraction schemas and explicit-utility comparisons. A consumer study is required for claims
+about human comprehension. See EXPERIMENT.md for limitations and the deferred experiments.

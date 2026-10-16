@@ -1,58 +1,71 @@
 # PDS Agentic Readability
 
-An independent, open benchmark of how readable Australian general-insurance **Product Disclosure Statements (PDSs)**
-are: for people, using classical readability formulas, and for **AI agents**, by measuring how faithfully a
-range of LLMs can extract and compare the coverage a PDS actually describes.
+An independent, open research project studying how faithfully AI models reconstruct the coverage
+rules in Australian general-insurance **Product Disclosure Statements (PDSs)**, and whether changing
+the presentation improves that fidelity.
 
-Why agents? Consumers increasingly ask an AI assistant to "find me the best cover". That agent has to read
-the PDS. A PDS that models misread is a PDS that will be misrepresented to customers.
+The first experiment compares the same policy information in three forms: a complete policy bundle,
+all relevant original clauses, and a standardised plain-language presentation. This separates overall
+extraction performance from the benefit of supplying evidence and the effect of changing its presentation.
+See [EXPERIMENT.md](EXPERIMENT.md) for the active v4 protocol.
 
 ## What's here
 
 | Path | Purpose |
 |---|---|
-| `PLAN.md` | Project scope, pipeline and caveats |
-| `EXPERIMENT.md` | Experimental design, v1 (rubric/pairwise) to v3 (agentic extraction), hypotheses, model panel |
-| `data/manifest.yaml` | Insurer x product -> current PDS URL (16 brands, car / home / landlord / travel) |
-| `data/download_log.csv` | Provenance of every downloaded file |
-| `data/metrics_classical.csv` | First-pass classical readability metrics (see caveat below) |
+| `EXPERIMENT.md` | Paired A/B/C pilot design, reference review, scoring and analysis |
+| `PLAN.md` | Implementation milestones and expansion gates |
+| `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel; availability varies |
+| `data/download_log.csv` | Downloader status log; immutable experiment provenance is still to be implemented |
+| `data/metrics_classical.csv` | Provisional classical readability metrics |
 | `scripts/find_pdf_links.py` | Harvest PDF links from insurer document-hub pages |
-| `scripts/download_pds.py` | Manifest-driven downloader (uses Chrome TLS impersonation; several insurer hosts block plain clients) |
-| `scripts/extract_text.py` | PyMuPDF text extraction to `data/text/` |
-| `scripts/inspect_pdfs.py` | QA: pages, words, preparation date per PDF |
-| `scripts/metrics_classical.py` | Flesch, Fog, SMOG, Dale-Chall plus hedge / negation / cross-reference density |
+| `scripts/download_pds.py` | Manifest-driven PDF downloader |
+| `scripts/extract_text.py` | PyMuPDF extraction into per-PDF text and metadata |
+| `scripts/inspect_pdfs.py` | Inspect pages, words and preparation dates |
+| `scripts/metrics_classical.py` | Classical formulas plus hedge, negation and cross-reference density |
 
-Downloaded PDFs and extracted text are **not** committed. They are public disclosure documents, but they are
-large and the insurers own them; re-create them locally from the manifest.
+Downloaded PDFs and extracted text are not committed. Re-create them locally from the manifest;
+the source documents remain the property of their respective insurers.
 
-## Quick start
+## Reproduce the collection pipeline
 
 ```bash
 uv sync
 source .venv/bin/activate
-python -I scripts/download_pds.py      # ~47 PDFs into data/raw_pds/
-python -I scripts/inspect_pdfs.py      # check dates and page counts
-python -I scripts/extract_text.py      # -> data/text/
-python -I scripts/metrics_classical.py # -> data/metrics_classical.csv
+python -I scripts/download_pds.py
+python -I scripts/inspect_pdfs.py
+python -I scripts/extract_text.py
+python -I scripts/metrics_classical.py
 ```
 
-## Coverage (Oct 2026)
+Download counts depend on source availability. The local snapshot on 16 October 2026 contains 49 PDFs,
+including separate car Part B files. A PDF is not necessarily a complete policy: the experiment will
+assemble versioned bundles with all applicable parts and supplements.
 
-Brands: NRMA, CGU, RACV, AAMI, GIO, Suncorp, Apia, Allianz, QBE, Youi, Budget Direct, Coles, RACQ, RAC WA,
-Everyday (ex Woolworths), Real Insurance. Product lines: comprehensive car, home and contents, landlord, travel
-where offered. See `data/manifest.yaml` for the exact documents and versions.
+## Planned pilot
 
-## Caveat on the first-pass metrics
+- Home buildings: eight complete policy bundles and twenty common extraction tasks.
+- Three models from different families, tested in fresh sessions across A/B/C presentations.
+- Human-verified reference answers and evidence packets, plus independently checked rewrites.
+- Primary outcome: correct answers with all material qualifications; primary contrast: standardised
+  presentation versus relevant original evidence.
+- Per-policy paired charts and error examples, with uncertainty and eligibility reported explicitly.
 
-`metrics_classical.csv` is computed on naive text extraction. Tables, bullet lists and headings without full
-stops inflate sentence length, so the grade-level figures are directional only. Layout-aware extraction and
-section segmentation are the next step before any results should be quoted.
+The pilot measures the selected models' performance. It does not establish human readability, recommend
+an insurer, or produce a definitive industry ranking. Earlier experimental designs remain in Git history.
 
-## Status
+## Status and data limitations
 
-Early. Documents collected, classical metrics drafted, experimental design written. LLM judging not yet run.
-Contributions welcome, see `CONTRIBUTING.md`.
+Documents have been collected and first-pass classical metrics computed. The paired experiment, bundle
+assembly, checked extraction, annotation and evaluation runner are not yet implemented. No LLM evaluation
+has been run, and the final evaluation package has not yet been frozen or preregistered.
+
+The existing text extraction is naive: tables, bullet lists and headings can inflate apparent sentence
+length and distort reading order. Treat the classical metrics as provisional; do not quote grade-level
+results as validated findings. The v4 study requires extraction QA before evaluation.
+
+Contributions welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 
-MIT. See `LICENSE`. The PDS documents themselves remain the property of their respective insurers.
+MIT; see [LICENSE](LICENSE). The PDS documents themselves remain the property of their respective insurers.
