@@ -1,0 +1,20 @@
+[project]
+name = "pds-agentic-readability"
+version = "0.1.0"
+description = "Benchmarking how readable Australian insurance Product Disclosure Statements are, for humans and for AI agents"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "curl-cffi>=0.16.3",
+    "lxml>=6.1.3",
+    "pandas>=3.0.6",
+    "pymupdf>=1.28.2",
+    "pyyaml>=6.0.3",
+    "requests>=2.34.2",
+    "textstat>=0.7.13",
+]
+
+[project.urls]
+Repository = "https://github.com/srepho/pds-agentic-readability"

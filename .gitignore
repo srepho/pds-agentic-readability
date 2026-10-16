@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env*
+# downloaded PDSs are public documents but large; re-download via scripts/download_pds.py
+data/raw_pds/
+data/text/
+NEXT_SESSION.md
+SESSION_HISTORY.md
+.DS_Store
