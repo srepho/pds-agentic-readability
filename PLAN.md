@@ -58,3 +58,7 @@ These are planned components, not implemented commands.
 After validating the pilot, consider more product lines, a broader model panel, native-PDF inputs,
 larger extraction schemas and explicit-utility comparisons. A consumer study is required for claims
 about human comprehension. See EXPERIMENT.md for limitations and the deferred experiments.
+
+Alternative small-study structures are documented in [EXPERIMENT_OPTIONS.md](EXPERIMENT_OPTIONS.md):
+wording/organisation factorial, controlled policy changes, supplementary-document handling and single
+versus joint policy extraction. These are candidates for consideration, not adopted milestones.

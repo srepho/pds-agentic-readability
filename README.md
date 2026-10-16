@@ -14,6 +14,7 @@ See [EXPERIMENT.md](EXPERIMENT.md) for the active v4 protocol.
 | Path | Purpose |
 |---|---|
 | `EXPERIMENT.md` | Paired A/B/C pilot design, reference review, scoring and analysis |
+| `EXPERIMENT_OPTIONS.md` | Four alternative designs for consideration; v4 remains active |
 | `PLAN.md` | Implementation milestones and expansion gates |
 | `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel; availability varies |
 | `data/download_log.csv` | Downloader status log; immutable experiment provenance is still to be implemented |

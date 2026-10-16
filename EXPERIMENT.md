@@ -5,6 +5,9 @@ in Git history. No LLM evaluation has been run. The task bank, reference answers
 interventions and analysis settings must be frozen before the evaluation run. This document alone
 is not a completed preregistration.
 
+Four alternative small-study structures are recorded in [EXPERIMENT_OPTIONS.md](EXPERIMENT_OPTIONS.md)
+for consideration. They do not replace or expand this active protocol unless explicitly adopted.
+
 ## 1. Research question and scope
 
 **How much does the presentation of a PDS impede faithful extraction, and which changes reduce
