@@ -1,0 +1,97 @@
+insurer,client,url,status,content_type,got_pdf
+nrma,python_default,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,403,text/html,False
+nrma,chrome_ua,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,200,application/pdf,True
+nrma,ChatGPT-User,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,403,text/html,False
+nrma,Claude-User,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,403,text/html,False
+nrma,Perplexity-User,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,403,text/html,False
+nrma,chrome_impersonated,https://www.nrma.com.au/content/dam/insurance-brands-aus/nrma/au/en/documents/home/nrma-home-pds-nrmahompds-rev2-0923.pdf,200,application/pdf,True
+cgu,python_default,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,403,text/html,False
+cgu,chrome_ua,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,200,application/pdf,True
+cgu,ChatGPT-User,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,403,text/html,False
+cgu,Claude-User,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,403,text/html,False
+cgu,Perplexity-User,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,403,text/html,False
+cgu,chrome_impersonated,https://www.cgu.com.au/content/dam/insurance-brands-aus/cgu/au/en/documents/policy-booklets/cgu-listed-events-home-pds-c0012-f-rev11-0623.pdf,200,application/pdf,True
+racv,python_default,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+racv,chrome_ua,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+racv,ChatGPT-User,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+racv,Claude-User,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+racv,Perplexity-User,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+racv,chrome_impersonated,https://www.racv.com.au/content/dam/racv-assets/documents/insurance/home-insurance/pds/home-insurance-pds-current.pdf,200,application/pdf,True
+aami,python_default,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+aami,chrome_ua,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+aami,ChatGPT-User,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+aami,Claude-User,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+aami,Perplexity-User,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+aami,chrome_impersonated,https://www.aami.com.au/assets/documents/aami/home/aami-home-building-insurance-pds-a01463.pdf,200,application/pdf,True
+gio,python_default,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+gio,chrome_ua,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+gio,ChatGPT-User,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+gio,Claude-User,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+gio,Perplexity-User,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+gio,chrome_impersonated,https://www.gio.com.au/documents/home-and-contents/home/gio-home-contents-insurance-pds-12318-24-05-25-a.pdf,200,application/pdf,True
+suncorp,python_default,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+suncorp,chrome_ua,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+suncorp,ChatGPT-User,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+suncorp,Claude-User,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+suncorp,Perplexity-User,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+suncorp,chrome_impersonated,https://www.suncorp.com.au/content/dam/suncorp/insurance/suncorp-insurance/documents/home-and-contents/home/suncorp-home-and-contents-pds-12314-24-05-25-a.pdf,200,application/pdf,True
+apia,python_default,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+apia,chrome_ua,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+apia,ChatGPT-User,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+apia,Claude-User,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+apia,Perplexity-User,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+apia,chrome_impersonated,https://www.apia.com.au/content/dam/suncorp/apia/documents/home-contents/apia-home-contents-pds-ap02580-21-06-25-a.pdf,200,application/pdf,True
+allianz,python_default,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+allianz,chrome_ua,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+allianz,ChatGPT-User,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+allianz,Claude-User,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+allianz,Perplexity-User,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+allianz,chrome_impersonated,https://www.einsure.com.au/wb/public/openPolicyDocument/POL1418DIR042520250720/$FILE/POL1418DIR.pdf?open,200,application/pdf,True
+qbe,python_default,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,403,text/html,False
+qbe,chrome_ua,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,200,application/pdf,True
+qbe,ChatGPT-User,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,200,application/pdf,True
+qbe,Claude-User,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,200,application/pdf,True
+qbe,Perplexity-User,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,200,application/pdf,True
+qbe,chrome_impersonated,https://qmdocumentlibrary.qbe.com/getfile?revision=E6E46774-12E2-4D2A-A23B-C0FC76C95763,200,application/pdf,True
+youi,python_default,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+youi,chrome_ua,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+youi,ChatGPT-User,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+youi,Claude-User,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+youi,Perplexity-User,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+youi,chrome_impersonated,https://www.youi.com.au/documents/home-pds,200,application/pdf,True
+budget_direct,python_default,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,403,text/html; charset=UTF-8,False
+budget_direct,chrome_ua,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,403,text/html; charset=UTF-8,False
+budget_direct,ChatGPT-User,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,403,text/html; charset=UTF-8,False
+budget_direct,Claude-User,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,403,text/html; charset=UTF-8,False
+budget_direct,Perplexity-User,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,403,text/html; charset=UTF-8,False
+budget_direct,chrome_impersonated,https://secure.budgetdirect.com.au/branding/resources/BUDD/legal/home/HPDSBUDD.pdf,200,application/pdf,True
+coles,python_default,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,403,text/html; charset=UTF-8,False
+coles,chrome_ua,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,403,text/html; charset=UTF-8,False
+coles,ChatGPT-User,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,403,text/html; charset=UTF-8,False
+coles,Claude-User,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,403,text/html; charset=UTF-8,False
+coles,Perplexity-User,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,403,text/html; charset=UTF-8,False
+coles,chrome_impersonated,https://colesinsurance.disconline.com.au/branding/resources/EXCL/legal/home/HPDSEXCL.pdf,200,application/pdf,True
+racq,python_default,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,200,application/pdf,True
+racq,chrome_ua,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,200,application/pdf,True
+racq,ChatGPT-User,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,200,application/pdf,True
+racq,Claude-User,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,200,application/pdf,True
+racq,Perplexity-User,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,200,application/pdf,True
+racq,chrome_impersonated,https://www.racq.com.au/-/media/project/racqgroup/racq/pdf/insurance/pds/household-insurance/pds-racq-household-insurance-091224-hh2-1224.pdf,ERR,CertificateVerifyError,False
+rac_wa,python_default,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+rac_wa,chrome_ua,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+rac_wa,ChatGPT-User,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+rac_wa,Claude-User,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+rac_wa,Perplexity-User,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+rac_wa,chrome_impersonated,https://sitecore-prd-cdn.rac.com.au/-/media/files/rac-website/pdfs/products/insurance/pds/home-pds-25022021.pdf,200,application/pdf,True
+everyday,python_default,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+everyday,chrome_ua,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+everyday,ChatGPT-User,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+everyday,Claude-User,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+everyday,Perplexity-User,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+everyday,chrome_impersonated,https://insurance.everyday.com.au/content/dam/Everyday/Insurance/Home/UsefulDocumentsHome/Everyday_Home_Insurance_PDS-Jul-26.pdf,200,application/pdf,True
+real,python_default,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False
+real,chrome_ua,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False
+real,ChatGPT-User,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False
+real,Claude-User,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False
+real,Perplexity-User,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False
+real,chrome_impersonated,https://www.realinsurance.com.au/documents/real-home-insurance-pds-july-2026.pdf,503,text/html,False

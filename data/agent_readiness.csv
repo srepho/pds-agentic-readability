@@ -1,0 +1,17 @@
+insurer,site,robots_txt,ai_agents_named,ai_agents_blocked_sitewide,ai_agents_blocked_on_pds_path,content_signal,llms_txt,llms_full_txt,pds_host,fetch_python_default,fetch_chrome_ua,fetch_ChatGPT-User,fetch_Claude-User,fetch_Perplexity-User,fetch_chrome_impersonated
+nrma,https://www.nrma.com.au,200,0,-,-,-,False,False,www.nrma.com.au,403,PDF,403,403,403,PDF
+cgu,https://www.cgu.com.au,200,0,-,-,-,False,False,www.cgu.com.au,403,PDF,403,403,403,PDF
+racv,https://www.racv.com.au,200,0,-,-,-,False,False,www.racv.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+aami,https://www.aami.com.au,200,0,-,-,-,False,False,www.aami.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+gio,https://www.gio.com.au,200,0,-,-,-,False,False,www.gio.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+suncorp,https://www.suncorp.com.au,200,0,-,-,-,False,False,www.suncorp.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+apia,https://www.apia.com.au,200,0,-,-,-,False,False,www.apia.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+allianz,https://www.allianz.com.au,200,0,-,-,-,True,False,www.einsure.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+qbe,https://www.qbe.com,200,0,-,-,-,True,False,qmdocumentlibrary.qbe.com,403,PDF,PDF,PDF,PDF,PDF
+youi,https://www.youi.com.au,200,0,-,-,-,False,False,www.youi.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+budget_direct,https://www.budgetdirect.com.au,200,0,-,-,-,False,False,secure.budgetdirect.com.au,403,403,403,403,403,PDF
+coles,https://www.colesinsurance.com.au,200,0,-,-,-,False,False,colesinsurance.disconline.com.au,403,403,403,403,403,PDF
+racq,https://www.racq.com.au,ERR,0,-,-,-,False,False,www.racq.com.au,PDF,PDF,PDF,PDF,PDF,ERR
+rac_wa,https://rac.com.au,200,0,-,-,-,False,False,sitecore-prd-cdn.rac.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+everyday,https://insurance.everyday.com.au,200,0,-,-,-,True,False,insurance.everyday.com.au,PDF,PDF,PDF,PDF,PDF,PDF
+real,https://www.realinsurance.com.au,503,0,-,-,-,False,False,www.realinsurance.com.au,503,503,503,503,503,503

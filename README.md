@@ -15,7 +15,10 @@ See [EXPERIMENT.md](EXPERIMENT.md) for the active v4 protocol.
 | Path | Purpose |
 |---|---|
 | `EXPERIMENT.md` | Paired A/B/B+/C pilot design, reference review, scoring and analysis |
+| `EXPERIMENTS_OVERVIEW.md` | Every experiment proposed so far, with status and recommended sequence |
 | `EXPERIMENT_OPTIONS.md` | Nine alternative designs for consideration; v4 remains active |
+| `AGENT_READINESS.md` | Which insurer sites let AI agents reach their PDSs (Oct 2026 snapshot) |
+| `scripts/probe_agent_readiness.py` | Probe robots.txt, llms.txt and PDS access for agent and browser clients |
 | `PLAN.md` | Implementation milestones and expansion gates |
 | `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel, including supplementary PDSs where published; availability varies |
 | `tasks/home_buildings_task_bank_draft.yaml` | Draft 20-task extraction bank for home buildings (12 flagged for the pilot); unreviewed |
