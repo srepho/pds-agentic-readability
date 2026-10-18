@@ -1,0 +1,75 @@
+# Agent personas: one row per kind of agent a consumer might actually be using (see AGENT_READINESS.md and
+# EXPERIMENTS_OVERVIEW.md, experiment 14). Model ids were checked against provider docs and OpenRouter's
+# public model list on 18 Oct 2026; re-check before a frozen run, they change monthly.
+# openrouter_model lets every persona run through one OPENROUTER_API_KEY (python ... --via-openrouter);
+# OpenRouter then uses the vendor's native web search for OpenAI, Anthropic, Google and Perplexity models.
+# Direct-API results and OpenRouter results are NOT interchangeable: record which route was used.
+personas:
+  - id: openai_flagship
+    provider: openai
+    model: gpt-6.1-sol            # Codex default since 7 Oct 2026; ChatGPT Work family
+    openrouter_model: openai/gpt-6.1-sol
+    represents: ChatGPT Work / Atlas, Codex
+  - id: openai_small
+    provider: openai
+    model: gpt-6-luna
+    openrouter_model: openai/gpt-6-luna
+    represents: OpenAI fast tier
+  - id: google_flagship
+    provider: gemini
+    model: gemini-4-argon         # newest Google model on OpenRouter; confirm the direct-API id
+    openrouter_model: google/gemini-4-argon
+    represents: Gemini app, top tier
+  - id: google_flash
+    provider: gemini
+    model: gemini-3.8-flash       # model used in Google's grounding docs, Oct 2026
+    openrouter_model: google/gemini-3.8-flash
+    represents: Gemini app default tier, Chrome Gemini
+  - id: anthropic_opus
+    provider: anthropic
+    model: claude-opus-5-5
+    openrouter_model: anthropic/claude-opus-5.5
+    options: {effort: medium, max_searches: 5}
+    represents: Claude apps, Claude Code / Cowork
+  - id: anthropic_sonnet
+    provider: anthropic
+    model: claude-sonnet-5-5
+    openrouter_model: anthropic/claude-sonnet-5.5
+    options: {effort: medium, max_searches: 5}
+    represents: Claude mid tier, many third-party agents
+  - id: anthropic_haiku
+    provider: anthropic
+    model: claude-haiku-5-5
+    openrouter_model: anthropic/claude-haiku-5.5
+    options: {effort: low, max_searches: 5}
+    represents: Claude small tier, subagents
+  - id: perplexity_comet_style
+    provider: anthropic
+    model: claude-opus-4-6        # Comet agent default since Mar-Apr 2026 (third-party sources)
+    openrouter_model: anthropic/claude-opus-4.6
+    options: {effort: medium, max_searches: 5}
+    represents: Perplexity Comet agent (one generation back)
+  - id: perplexity_sonar
+    provider: openrouter
+    model: perplexity/sonar-pro
+    represents: Perplexity answer engine
+  - id: openclaw_default
+    provider: openrouter
+    model: openai/gpt-5.6-sol     # OpenClaw fresh-install default mid-2026
+    represents: OpenClaw out of the box
+  - id: selfhosted_deepseek
+    provider: openrouter
+    model: deepseek/deepseek-v4.1-flash
+    represents: Self-hosted agents, cheapest high-volume tier
+  - id: selfhosted_minimax
+    provider: openrouter
+    model: minimax/minimax-m3
+    represents: Most-run model among OpenClaw users (vendor blog)
+  - id: selfhosted_glm
+    provider: openrouter
+    model: z-ai/glm-5.3-flash
+    represents: Self-hosted agents, cheap tier
+  - id: diy_qwen
+    provider: openrouter
+    model: qwen/qwen3.8-27b
+    represents: Open-weights mid tier, Manus / DIY proxy

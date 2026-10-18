@@ -2,9 +2,13 @@
 __pycache__/
 *.pyc
 .env*
+!.env.example
 # downloaded PDSs are public documents but large; re-download via scripts/download_pds.py
 data/raw_pds/
 data/text/
 NEXT_SESSION.md
 SESSION_HISTORY.md
 .DS_Store
+
+# raw agent responses (may contain third-party page text)
+data/agent_runs/

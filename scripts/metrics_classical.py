@@ -1,12 +1,15 @@
 """Compute classical readability metrics for every extracted text -> data/metrics_classical.csv"""
-import csv, pathlib, re
+import csv
+import pathlib
+import re
+
 import textstat
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 TXT = ROOT / "data" / "text"
-HEDGES = re.compile(r"\b(unless|except|provided that|subject to|notwithstanding|other than|only if)\b", re.I)
-NEG = re.compile(r"\b(not|no|never|neither|nor|cannot|won't|don't|isn't|aren't)\b", re.I)
-XREF = re.compile(r"\b(see|refer to|as described in|set out in|under the heading|section|page)\s+['\"“]?[A-Z0-9]", re.I)
+HEDGES = re.compile(r"\b(unless|except|provided that|subject to|notwithstanding|other than|only if)\b", re.IGNORECASE)
+NEG = re.compile(r"\b(not|no|never|neither|nor|cannot|won't|don't|isn't|aren't)\b", re.IGNORECASE)
+XREF = re.compile(r"\b(see|refer to|as described in|set out in|under the heading|section|page)\s+['\"“]?[A-Z0-9]", re.IGNORECASE)
 
 def sentences(text):
     text = re.sub(r"\s+", " ", text)

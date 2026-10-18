@@ -148,6 +148,12 @@ real agents, or whether browser-driving agents get through regardless.
 actionable for insurers: a PDS that agents cannot retrieve gets summarised from somewhere else. It needs no
 annotation beyond a list of current document versions, which the manifest already holds.
 
+**API-level stand-in, built.** `scripts/run_shopping_agents.py` runs the same question bank through the
+models underneath these products, called directly with each vendor's web search enabled. It measures
+which insurers get named and what sources get cited, but not product-specific retrieval behaviour such as
+browser automation, so it complements the real-product run rather than replacing it. The scenario bank
+is a placeholder until the most common products and consumer situations have been researched.
+
 **Limitations.** Agent products change weekly and do not expose their full retrieval traces. Results are a
 dated snapshot of named products, not of the underlying models.
 

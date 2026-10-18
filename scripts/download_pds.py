@@ -1,7 +1,10 @@
 """Download every PDS in data/manifest.yaml into data/raw_pds/<insurer>/<product>.pdf and write a CSV log."""
-import csv, sys, time, pathlib, hashlib
-import yaml
+import csv
+import pathlib
+import time
+
 import requests as plain_requests
+import yaml
 from curl_cffi import requests  # Chrome TLS impersonation: several insurer WAFs block plain python/curl
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -12,7 +15,7 @@ UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit
 def fetch(url, dest):
     try:
         r = requests.get(url, headers=UA, timeout=90, allow_redirects=True, impersonate="chrome")
-    except Exception:
+    except Exception:  # noqa: BLE001 - fallback client on any TLS or transport failure
         # a few hosts (e.g. racq.com.au) fail TLS under impersonation but accept a plain client
         r = plain_requests.get(url, headers=UA, timeout=90, allow_redirects=True)
     ct = r.headers.get("content-type", "")
@@ -37,7 +40,7 @@ def main():
                     rows.append([ins, prod, fname, url, "cached", "", dest.stat().st_size]); continue
                 try:
                     ok, code, ct, n = fetch(url, dest)
-                except Exception as e:
+                except Exception as e:  # noqa: BLE001 - log the failure and continue the batch
                     ok, code, ct, n = False, "ERR", str(e)[:80], 0
                 rows.append([ins, prod, fname, url, "ok" if ok else "FAIL", f"{code} {ct}", n])
                 print(f"{'OK  ' if ok else 'FAIL'} {ins:14s} {fname:16s} {code} {ct[:30]} {n//1024}KB")

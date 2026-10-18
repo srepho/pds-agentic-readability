@@ -19,6 +19,10 @@ See [EXPERIMENT.md](EXPERIMENT.md) for the active v4 protocol.
 | `EXPERIMENT_OPTIONS.md` | Nine alternative designs for consideration; v4 remains active |
 | `AGENT_READINESS.md` | Which insurer sites let AI agents reach their PDSs (Oct 2026 snapshot) |
 | `scripts/probe_agent_readiness.py` | Probe robots.txt, llms.txt and PDS access for agent and browser clients |
+| `pds_agents/` | Provider-agnostic harness: Anthropic, OpenAI, Google and OpenRouter adapters with web search on |
+| `config/agent_panel.yaml` | Fourteen agent personas, from consumer flagships to cheap self-hosted models |
+| `config/shopping_scenarios.yaml` | Draft consumer shopping scenarios (placeholder bank) |
+| `scripts/run_shopping_agents.py` | Ask each persona each scenario; log answers, citations and searches |
 | `PLAN.md` | Implementation milestones and expansion gates |
 | `data/manifest.yaml` | Source URLs for 16 brands across car / home / landlord / travel, including supplementary PDSs where published; availability varies |
 | `tasks/home_buildings_task_bank_draft.yaml` | Draft 20-task extraction bank for home buildings (12 flagged for the pilot); unreviewed |
@@ -48,6 +52,26 @@ Download counts depend on source availability. The local snapshot on 16 October 
 PDFs, including separate car Part B files, plus 44 supplementary PDSs. A PDF is not necessarily a complete
 policy: the experiment will assemble versioned bundles with all applicable parts and supplements, and the
 applicability of each supplement to its base PDS version still has to be verified against effective dates.
+
+## Asking web-enabled models for insurance advice
+
+`scripts/run_shopping_agents.py` sends consumer questions such as "what's the best home and contents
+insurance for me?" to a panel of models with web search switched on, then records which insurers each
+answer names, in what order, and whether it cited insurer pages, PDS documents, comparison sites or
+nothing. It is an API-level stand-in for experiment 14 in
+[EXPERIMENTS_OVERVIEW.md](EXPERIMENTS_OVERVIEW.md): the same underlying models, not the consumer products.
+
+```bash
+cp .env.example .env                 # add the keys you have; personas without a key are skipped
+python scripts/run_shopping_agents.py                       # dry run: shows the plan, sends nothing
+python scripts/run_shopping_agents.py --personas anthropic_opus --scenarios home_flood_prone_qld --execute
+python scripts/run_shopping_agents.py --via-openrouter --repeats 3 --execute   # one key, every persona
+```
+
+Raw responses are written append-only to `data/agent_runs/` (gitignored) with a summary CSV per run.
+Prompts deliberately never mention PDSs, so whether an agent consults them is part of what is measured.
+Mention order is a proxy for the recommendation; treat it as such. Direct-API and OpenRouter routes can
+behave differently, and each run records which route it used.
 
 ## Planned pilot
 

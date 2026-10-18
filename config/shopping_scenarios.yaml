@@ -1,0 +1,60 @@
+# DRAFT consumer shopping scenarios. Placeholder bank: replace or extend once the most common products and
+# consumer situations have been researched (product mix, states, life stages, risk features).
+# Prompts deliberately read like a consumer talking to an assistant: no mention of PDSs, no instruction to
+# cite sources, no insurer names. Whether the agent consults PDSs at all is one of the things measured.
+version: 0.1-draft
+templates:
+  shopping: >-
+    I live in {location}. {situation} What's the best {product} for me? Please recommend specific insurers
+    and explain why.
+scenarios:
+  - id: car_young_commuter_nsw
+    product_line: car
+    product: comprehensive car insurance
+    location: Parramatta, NSW
+    situation: I'm 24, I drive a 2021 Toyota Corolla that I park on the street, and I commute to work every day.
+  - id: car_family_suv_vic
+    product_line: car
+    product: comprehensive car insurance
+    location: Geelong, VIC
+    situation: We're a family with a 2023 Mazda CX-5 financed through the dealer. My 17-year-old will start driving it soon on their learner's permit.
+  - id: car_retiree_low_km_qld
+    product_line: car
+    product: car insurance
+    location: Toowoomba, QLD
+    situation: I'm 71 and retired. I drive a 2016 Honda Jazz less than 5,000 km a year, garaged at night.
+  - id: home_flood_prone_qld
+    product_line: home
+    product: home and contents insurance
+    location: a riverside suburb of Brisbane, QLD
+    situation: I own a 1970s house that was near the 2022 floods. I want to be sure flood is actually covered and I have about $60,000 of contents.
+  - id: home_bushfire_nsw
+    product_line: home
+    product: home and contents insurance
+    location: the Blue Mountains, NSW
+    situation: I own a timber house on a bush block. I'm worried about bushfire and about having enough to rebuild to current standards.
+  - id: home_suburban_wa
+    product_line: home
+    product: home and contents insurance
+    location: a suburb of Perth, WA
+    situation: We own a 15-year-old brick house with solar panels and a pool, and we both work from home with expensive laptops.
+  - id: contents_renter_vic
+    product_line: contents
+    product: contents insurance
+    location: an inner-city apartment in Melbourne, VIC
+    situation: I rent with a flatmate. I have a bike worth $3,000, a laptop and a camera that I take out of the house.
+  - id: landlord_unit_qld
+    product_line: landlord
+    product: landlord insurance
+    location: the Gold Coast, QLD
+    situation: I own a two-bedroom unit that I rent out through an agent. I'm worried about tenants not paying rent and about damage.
+  - id: landlord_house_sa
+    product_line: landlord
+    product: landlord insurance
+    location: Adelaide, SA
+    situation: I'm about to rent out my old house for the first time. It will be unfurnished and managed by me, not an agent.
+  - id: travel_family_japan
+    product_line: travel
+    product: travel insurance
+    location: Sydney, NSW
+    situation: Two adults and two kids are going skiing in Japan for two weeks in January. One of us has asthma.

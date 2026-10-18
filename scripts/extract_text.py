@@ -1,6 +1,9 @@
 """Extract text from every PDF in data/raw_pds into data/text/<insurer>/<product>.txt (+ .json metadata).
 Keeps page breaks as form-feed markers so later segmentation can use page numbers."""
-import json, pathlib, re, sys
+import json
+import pathlib
+import re
+
 import pymupdf
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
