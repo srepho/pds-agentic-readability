@@ -5,10 +5,15 @@ Writes data/agent_readiness.csv (one row per insurer) and data/agent_readiness_a
 Caveat: agent user-agent strings are sent from this machine's IP. Sites that verify bots by IP range
 will treat these as spoofed, so a block here does not prove the real agent is blocked, and a pass does
 not prove the real agent is allowed."""
-import csv, pathlib, re, time, urllib.robotparser
+import csv
+import pathlib
+import re
+import time
+import urllib.robotparser
 from urllib.parse import urlparse
-import yaml
+
 import requests as plain
+import yaml
 from curl_cffi import requests as cffi
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -39,7 +44,7 @@ def get(url, ua):
         else:
             r = plain.get(url, headers={"User-Agent": ua} if ua else None, timeout=40, allow_redirects=True)
         return r.status_code, r.headers.get("content-type", ""), r.content
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - a probe records any network failure as a result
         return "ERR", type(e).__name__, b""
 
 def robots_summary(base):
